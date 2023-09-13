@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Pathfinding;
 public class EnemyLOS : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -20,7 +20,8 @@ public class EnemyLOS : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("player");
+            transform.GetComponentInParent<AIDestinationSetter>().target = collision.transform;
+            transform.GetComponentInParent<AIPath>().maxSpeed *= 2;
         }
     }
 }

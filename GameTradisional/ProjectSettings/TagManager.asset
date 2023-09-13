@@ -44,3 +44,9 @@ TagManager:
   - name: NotLightEffect
     uniqueID: 905195355
     locked: 0
+  - name: LightEffect
+    uniqueID: 3526218913
+    locked: 0
+  - name: NotGlobalLight
+    uniqueID: 973047945
+    locked: 0
