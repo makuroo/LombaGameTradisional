@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 104b7247c9036ce49bc073bb0accbdc0
+guid: 8084d3fd84729ce4eb0c702813bec12c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 14, y: 150, z: 486, w: 150}
+  spriteBorder: {x: 50, y: 190, z: 50, w: 29}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lantai_0
+      name: Rak_Lemari_Kecil 1_0
       rect:
         serializedVersion: 2
-        x: 150
-        y: 489
-        width: 300
-        height: 100
+        x: 50
+        y: 190
+        width: 150
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,92 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 488a199f25efbbf4ca2d546a4787ddb2
-      internalID: -2008367250
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lantai_1
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 150
-        width: 100
-        height: 315
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68b0dfe178233d843b6f41194f9b4e9a
-      internalID: -1947691206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lantai_2
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 150
-        width: 300
-        height: 315
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 382ecac17a49d4a4e94b869341c0f937
-      internalID: -1118431854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lantai_3
-      rect:
-        serializedVersion: 2
-        x: 478
-        y: 150
-        width: 100
-        height: 315
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96b660f901b78de4ba6987b232885ce1
-      internalID: 698026497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lantai_4
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 27
-        width: 300
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc4631e7056610740b8559b76cfa9bd0
-      internalID: -1281160319
+      spriteID: a58360f78168580409939a1611fc3baa
+      internalID: -464414853
       vertices: []
       indices: 
       edges: []
@@ -232,11 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      lantai_0: -2008367250
-      lantai_1: -1947691206
-      lantai_2: -1118431854
-      lantai_3: 698026497
-      lantai_4: -1281160319
+      Rak_Lemari_Kecil 1_0: -464414853
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
