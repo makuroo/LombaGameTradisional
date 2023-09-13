@@ -11,6 +11,7 @@ D:\Unity Editor\2021.3.24f1\Editor\Unity.exe
 -name
 AssetImportWorker1
 -projectPath
+<<<<<<< Updated upstream
 D:/GitHubDesktop/LombaGameTradisional/GameTradisional
 -logFile
 Logs/AssetImportWorker1.log
@@ -18,6 +19,25 @@ Logs/AssetImportWorker1.log
 59274
 Successfully changed project path to: D:/GitHubDesktop/LombaGameTradisional/GameTradisional
 D:/GitHubDesktop/LombaGameTradisional/GameTradisional
+=======
+<<<<<<< HEAD
+D:/GameProg/LombaGameTradisional/GameTradisional
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+62594
+Successfully changed project path to: D:/GameProg/LombaGameTradisional/GameTradisional
+D:/GameProg/LombaGameTradisional/GameTradisional
+=======
+D:/GitHubDesktop/LombaGameTradisional/GameTradisional
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+59274
+Successfully changed project path to: D:/GitHubDesktop/LombaGameTradisional/GameTradisional
+D:/GitHubDesktop/LombaGameTradisional/GameTradisional
+>>>>>>> a94244d5247db9f726d256d3a6d4383a26c29c5c
+>>>>>>> Stashed changes
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,6 +67,7 @@ D:/GitHubDesktop/LombaGameTradisional/GameTradisional
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< Updated upstream
 Player connection [18656] Host "[IP] 192.168.0.104 [Port] 0 [Flags] 2 [Guid] 1173777042 [EditorId] 1173777042 [Version] 1048832 [Id] WindowsEditor(7,Frank) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
 Player connection [18656] Host "[IP] 192.168.0.104 [Port] 0 [Flags] 2 [Guid] 1173777042 [EditorId] 1173777042 [Version] 1048832 [Id] WindowsEditor(7,Frank) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
@@ -56,6 +77,29 @@ Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.24f1 (cf10dcf7010d)
 [Subsystems] Discovering subsystems at path D:/Unity Editor/2021.3.24f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path D:/GitHubDesktop/LombaGameTradisional/GameTradisional/Assets
+=======
+<<<<<<< HEAD
+Player connection [21868] Host "[IP] 192.168.0.103 [Port] 0 [Flags] 2 [Guid] 3569723672 [EditorId] 3569723672 [Version] 1048832 [Id] WindowsEditor(7,Richard) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [21868] Host "[IP] 192.168.0.103 [Port] 0 [Flags] 2 [Guid] 3569723672 [EditorId] 3569723672 [Version] 1048832 [Id] WindowsEditor(7,Richard) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 388.49 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.24f1 (cf10dcf7010d)
+[Subsystems] Discovering subsystems at path D:/2021.3.24f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GameProg/LombaGameTradisional/GameTradisional/Assets
+=======
+Player connection [18656] Host "[IP] 192.168.0.104 [Port] 0 [Flags] 2 [Guid] 1173777042 [EditorId] 1173777042 [Version] 1048832 [Id] WindowsEditor(7,Frank) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [18656] Host "[IP] 192.168.0.104 [Port] 0 [Flags] 2 [Guid] 1173777042 [EditorId] 1173777042 [Version] 1048832 [Id] WindowsEditor(7,Frank) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 257.56 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.24f1 (cf10dcf7010d)
+[Subsystems] Discovering subsystems at path D:/Unity Editor/2021.3.24f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GitHubDesktop/LombaGameTradisional/GameTradisional/Assets
+>>>>>>> a94244d5247db9f726d256d3a6d4383a26c29c5c
+>>>>>>> Stashed changes
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -64,6 +108,7 @@ Direct3D:
     VRAM:     4021 MB
     Driver:   31.0.15.1694
 Initialize mono
+<<<<<<< Updated upstream
 Mono path[0] = 'D:/Unity Editor/2021.3.24f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity Editor/2021.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Unity Editor/2021.3.24f1/Editor/Data/MonoBleedingEdge/etc'
@@ -80,11 +125,52 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (1674ms)
 		BeginReloadAssembly (289ms)
+=======
+<<<<<<< HEAD
+Mono path[0] = 'D:/2021.3.24f1/Editor/Data/Managed'
+Mono path[1] = 'D:/2021.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/2021.3.24f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/2021.3.24f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: D:/2021.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004430 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 426 ms
+Refreshing native plugins compatible for Editor in 218.79 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.760 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1760ms)
+		BeginReloadAssembly (251ms)
+=======
+Mono path[0] = 'D:/Unity Editor/2021.3.24f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity Editor/2021.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Unity Editor/2021.3.24f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56676
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unity Editor/2021.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004448 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 267.32 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.673 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1674ms)
+		BeginReloadAssembly (289ms)
+>>>>>>> a94244d5247db9f726d256d3a6d4383a26c29c5c
+>>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
+<<<<<<< Updated upstream
 		EndReloadAssembly (1184ms)
 			LoadAssemblies (289ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -95,16 +181,49 @@ Domain Reload Profiling:
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (12ms)
 				SetLoadedEditorAssemblies (0ms)
+=======
+<<<<<<< HEAD
+		EndReloadAssembly (1263ms)
+			LoadAssemblies (254ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (207ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (56ms)
+			SetupLoadedEditorAssemblies (881ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (496ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (219ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (104ms)
+				ProcessInitializeOnLoadMethodAttributes (61ms)
+=======
+		EndReloadAssembly (1184ms)
+			LoadAssemblies (289ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (269ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (101ms)
+			SetupLoadedEditorAssemblies (703ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+>>>>>>> Stashed changes
 				RefreshPlugins (267ms)
 				BeforeProcessingInitializeOnLoad (2ms)
 				ProcessInitializeOnLoadAttributes (303ms)
 				ProcessInitializeOnLoadMethodAttributes (117ms)
+<<<<<<< Updated upstream
+=======
+>>>>>>> a94244d5247db9f726d256d3a6d4383a26c29c5c
+>>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< Updated upstream
 Registered in 0.019561 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\GitHubDesktop\LombaGameTradisional\GameTradisional\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
@@ -118,6 +237,69 @@ Domain Reload Profiling:
 	ReloadAssembly (2868ms)
 		BeginReloadAssembly (309ms)
 			ExecutionOrderSort (0ms)
+=======
+<<<<<<< HEAD
+Registered in 0.012641 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GameProg\LombaGameTradisional\GameTradisional\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GameProg\LombaGameTradisional\GameTradisional\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 121.57 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.518 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1519ms)
+		BeginReloadAssembly (151ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (21ms)
+		EndReloadAssembly (1221ms)
+			LoadAssemblies (231ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (300ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (79ms)
+			SetupLoadedEditorAssemblies (617ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (15ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (122ms)
+				BeforeProcessingInitializeOnLoad (103ms)
+				ProcessInitializeOnLoadAttributes (282ms)
+				ProcessInitializeOnLoadMethodAttributes (93ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.16 seconds
+Refreshing native plugins compatible for Editor in 1.26 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5693 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 67 unused Assets / (0.8 MB). Loaded Objects now: 6146.
+Memory consumption went from 230.6 MB to 229.7 MB.
+Total: 3.772200 ms (FindLiveObjects: 0.427600 ms CreateObjectMapping: 0.230800 ms MarkObjects: 2.814600 ms  DeleteObjects: 0.298100 ms)
+=======
+Registered in 0.019561 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GitHubDesktop\LombaGameTradisional\GameTradisional\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GitHubDesktop\LombaGameTradisional\GameTradisional\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 244.26 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.867 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2868ms)
+		BeginReloadAssembly (309ms)
+			ExecutionOrderSort (0ms)
+>>>>>>> Stashed changes
 			DisableScriptedObjects (15ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
@@ -777,6 +959,10 @@ Unloading 5258 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 28 unused Assets / (0.7 MB). Loaded Objects now: 5881.
 Memory consumption went from 204.8 MB to 204.1 MB.
 Total: 5.597700 ms (FindLiveObjects: 0.538000 ms CreateObjectMapping: 0.416900 ms MarkObjects: 4.143600 ms  DeleteObjects: 0.497500 ms)
+<<<<<<< Updated upstream
+=======
+>>>>>>> a94244d5247db9f726d256d3a6d4383a26c29c5c
+>>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -790,6 +976,16 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+Received Import Request.
+  Time since last request: 310328.412054 seconds.
+  path: Assets/lantai.png
+  artifactKey: Guid(104b7247c9036ce49bc073bb0accbdc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/lantai.png using Guid(104b7247c9036ce49bc073bb0accbdc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f85f11e06d5308b9273ef90d433ac66') in 0.353674 seconds 
+=======
+>>>>>>> Stashed changes
 Received Prepare
 Registering precompiled user dll's ...
 Registered in 0.020000 seconds.
@@ -1074,3 +1270,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+<<<<<<< Updated upstream
+=======
+>>>>>>> a94244d5247db9f726d256d3a6d4383a26c29c5c
+>>>>>>> Stashed changes
