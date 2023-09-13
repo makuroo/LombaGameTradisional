@@ -11,11 +11,13 @@ public class Movement : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
     [SerializeField]private float rotateSpeed;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,11 @@ public class Movement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         transform.Translate(new Vector2(horizontalInput, verticalInput).normalized * speed * Time.deltaTime);
         LightRotation();
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity  = new Vector2(horizontalInput, verticalInput).normalized * speed * Time.fixedDeltaTime * Vector2.right;
     }
 
     private void LightRotation()
