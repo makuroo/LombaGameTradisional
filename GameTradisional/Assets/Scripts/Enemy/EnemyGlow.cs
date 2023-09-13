@@ -15,7 +15,8 @@ public class EnemyGlow : MonoBehaviour
     [SerializeField] private float nextGlow;
     [SerializeField] private float nextGlowTimer;
     [SerializeField] private float countDown;
-
+    [SerializeField] private CameraTransition transition;
+    [SerializeField] private Movement playerMovement;
     void Start()
     {
         
@@ -32,21 +33,27 @@ public class EnemyGlow : MonoBehaviour
             nextGlowTimer = 0;
         }
             
-        if (nextGlowTimer >= nextGlow)
+        if (nextGlowTimer >= nextGlow && !isFirst)
             isAnnounce = true;
 
         if (isAnnounce)
         {
+            playerMovement.enabled = false;
             nextGlowTimer = 0;
             AnnouncePresence();
         }
-            
+
+        if(light2D.intensity == 0 && nextGlowTimer>=countDown && isFirst)
+        {
+            if (transition.finishedBlend)
+                playerMovement.enabled = true;
+        }
     }
 
 
     private void AnnouncePresence()
     {
-
+        transition.IncreaseCameraPriority();
         if(light2D.intensity == 1)
         {
             isOff = true;
@@ -55,6 +62,9 @@ public class EnemyGlow : MonoBehaviour
         {
             isOff = false;
             timer = 0;
+            transition.DecreaseCameraPriority();
+            if (transition.finishedBlend)
+                playerMovement.enabled = true;
             isAnnounce = false;
         }
 
@@ -67,6 +77,7 @@ public class EnemyGlow : MonoBehaviour
         {
             timer += Time.deltaTime;
             light2D.intensity = Mathf.Lerp(1, 0, timer / lerpDuration);
+
         }
     }
     
