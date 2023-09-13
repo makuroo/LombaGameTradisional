@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bambu : MonoBehaviour
 {
 
-    //LAST UPDATED : 12/09/2023 00:42
+    //LAST UPDATED : 12/09/2023 21:22
 
     //AutoRotate
     public float rotationSpeed = 10.0f;
@@ -17,11 +17,10 @@ public class Bambu : MonoBehaviour
     private float newRotation;
 
     //Direction
-    [SerializeField]
-    private int randomDirection;
+    public int randomDirection;
 
     //KalahAtauTidak
-    private int mainBambuGila = 1;
+    public int mainBambuGila = 1;
 
 
     void Start()
@@ -43,16 +42,12 @@ public class Bambu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 //Debug.Log("TekanA");
-                newRotation = currentRotation + balanceForce;
-                transform.rotation = Quaternion.Euler(0, 0, newRotation);
-                currentRotation = newRotation;
+                SembanginKeKiri();
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 //Debug.Log("TekanD");
-                newRotation = currentRotation - balanceForce;
-                transform.rotation = Quaternion.Euler(0, 0, newRotation);
-                currentRotation = newRotation;
+                SembanginKeKanan();
             }
             else
             {
@@ -83,5 +78,18 @@ public class Bambu : MonoBehaviour
         }
     }
 
+    public void SembanginKeKiri()
+    {
+        newRotation = currentRotation + balanceForce;
+        transform.rotation = Quaternion.Euler(0, 0, newRotation);
+        currentRotation = newRotation;
+    }
+
+    public void SembanginKeKanan()
+    {
+        newRotation = currentRotation - balanceForce;
+        transform.rotation = Quaternion.Euler(0, 0, newRotation);
+        currentRotation = newRotation;
+    }
 
 }

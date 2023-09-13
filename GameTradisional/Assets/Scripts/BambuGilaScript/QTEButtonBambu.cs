@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class QTEButtonBambu : MonoBehaviour
 {
 
-    //LAST UPDATED : 12/09/2023 16:12
+    //LAST UPDATED : 12/09/2023 21:22
 
     //Component
     public Text textQTE;
@@ -21,9 +21,13 @@ public class QTEButtonBambu : MonoBehaviour
     public Color startColor = Color.white;
     public Color endColor = Color.red;
 
+    //QTE
     private float appearTimer;
     private float qteTimerDurasi; //timer jalan ketika qtenya muncul
     private bool qteActive = false;
+
+    //Script
+    public Bambu bambuScript;
 
     private void Start()
     {
@@ -33,12 +37,16 @@ public class QTEButtonBambu : MonoBehaviour
 
     private void Update()
     {
-        appearTimer -= Time.deltaTime;
-
-        if (appearTimer <= 0f && !qteActive)
+        if(bambuScript.mainBambuGila == 1)
         {
-            ShowQTE();
+            appearTimer -= Time.deltaTime;
+
+            if (appearTimer <= 0f && !qteActive)
+            {
+                ShowQTE();
+            }
         }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && qteActive)
         {
@@ -53,6 +61,7 @@ public class QTEButtonBambu : MonoBehaviour
             if (qteTimerDurasi <= 0f)
             {
                 Debug.Log("Gagal QUICK TIME EVENT : BAMBU");
+                Konsekuensi();
                 HideQTE();
                 RandomWaktuMuncul();
             }
@@ -84,5 +93,20 @@ public class QTEButtonBambu : MonoBehaviour
         qteActive = false;
     }
 
+    private void Konsekuensi()
+    {
+        bambuScript.balanceForce = 30;
+
+        if (bambuScript.randomDirection == 1)
+        {
+            bambuScript.SembanginKeKiri();
+            bambuScript.balanceForce = 3;
+        }
+        else if (bambuScript.randomDirection == -1)
+        {
+            bambuScript.SembanginKeKanan();
+            bambuScript.balanceForce = 3;
+        }
+    }
 
 }
