@@ -6,6 +6,8 @@ TagManager:
   tags:
   - bambuBambu
   - bambuGround
+  - HideSpace
+  - Lemari
   layers:
   - Default
   - TransparentFX
@@ -14,9 +16,9 @@ TagManager:
   - Water
   - UI
   - Obstacle
-  - 
-  - 
-  - 
+  - Cameraboundary
+  - Player
+  - HideSpace
   - 
   - 
   - 

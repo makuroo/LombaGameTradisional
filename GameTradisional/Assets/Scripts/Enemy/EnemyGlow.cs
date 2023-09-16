@@ -11,12 +11,12 @@ public class EnemyGlow : MonoBehaviour
     [SerializeField] private Light2D light2D;
     [SerializeField] private bool isAnnounce;
     private bool isOff = false;
-    private bool isFirst = true;
+    [SerializeField]private bool isFirst = true;
+    public bool isFirstFinish = false;
     [SerializeField] private float nextGlow;
     [SerializeField] private float nextGlowTimer;
     [SerializeField] private float countDown;
-    [SerializeField] private CameraTransition transition;
-    [SerializeField] private Movement playerMovement;
+
     void Start()
     {
         
@@ -38,35 +38,34 @@ public class EnemyGlow : MonoBehaviour
 
         if (isAnnounce)
         {
-            playerMovement.enabled = false;
             nextGlowTimer = 0;
             AnnouncePresence();
         }
 
-        if(light2D.intensity == 0 && nextGlowTimer>=countDown && isFirst)
-        {
-            if (transition.finishedBlend)
-                playerMovement.enabled = true;
-        }
     }
 
 
     private void AnnouncePresence()
     {
-        transition.IncreaseCameraPriority();
-        if(light2D.intensity == 1)
+        if(light2D.intensity >= 1)
         {
             isOff = true;
             timer = 0;
-        }else if(light2D.intensity == 0 && !isFirst)
+        }else if(light2D.intensity == 0 && !isFirst && isFirstFinish)
         {
+            
             isOff = false;
             timer = 0;
-            transition.DecreaseCameraPriority();
-            if (transition.finishedBlend)
-                playerMovement.enabled = true;
+                
+            isAnnounce = false;
+        } else if (light2D.intensity == 0 && !isFirst && !isFirstFinish)
+        {
+            isFirstFinish = true;
+            isOff = false;
+            timer = 0;
             isAnnounce = false;
         }
+
 
         if (light2D.intensity < 1 && !isOff)
         {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float horizontalInput;
-    [SerializeField] private float verticalInput;
+    public float horizontalInput { get; private set; }
+    public float verticalInput { get; private set; }
     [SerializeField] private float rotz;
     private Camera mainCam;
     private Vector3 mousePos;
