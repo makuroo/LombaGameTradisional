@@ -31,29 +31,27 @@ public class EnemyPathing : MonoBehaviour
     }
     private void Update()
     {
+        //prevent player from camping
+        if (playerMovement.horizontalInput == 0 && playerMovement.verticalInput == 0 && playerMovement.enabled)
+        {
+            if (currentTime >= 0)
+            {
+                currentTime -= Time.deltaTime;
+            }
+            else if (currentTime <= 0)
+            {
+                destinationSetter.target = playerMovement.transform;
+                Debug.Log("TargetPlayer");
+                currentTime = timeBeforeChasingPlayer;
+            }
 
-        //if (playerMovement.horizontalInput == 0 && playerMovement.verticalInput == 0 && playerMovement.enabled)
-        //{
-        //    Debug.Log(currentTime);
-        //    if (currentTime >= 0)
-        //    {
-        //        currentTime -= Time.deltaTime;
-        //    }
-        //    else if (currentTime <= 0)
-        //    {
-        //        destinationSetter.target = playerMovement.transform;
-        //        Debug.Log("TargetPlayer");
-        //        currentTime = timeBeforeChasingPlayer;
-        //    }
+            if (currentTime < timeBeforeChasingPlayer && (playerMovement.horizontalInput != 0 || playerMovement.verticalInput != 0))
+            {
+                currentTime = timeBeforeChasingPlayer;
+            }
+        }
 
-        //    if(currentTime<timeBeforeChasingPlayer && (playerMovement.horizontalInput != 0 || playerMovement.verticalInput != 0))
-        //    {
-        //        currentTime = timeBeforeChasingPlayer;
-        //    }
-        //}
-
-
-
+        //change ai target to next checkpoint
         if (aiPath.reachedEndOfPath&&!changeNode)
         {
             nodeIndex++;
@@ -70,7 +68,7 @@ public class EnemyPathing : MonoBehaviour
             changeNode = false;
         }
 
-
+        //enemy finish countdown
         if (enemyCountdownStatus.isFirstFinish)
         {
             OnCountDownFinish?.Invoke(this, EventArgs.Empty);
@@ -83,4 +81,11 @@ public class EnemyPathing : MonoBehaviour
         OnCountDownFinish -= StartPathfinding;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            aiPath.isStopped = true;
+        }
+    }
 }
