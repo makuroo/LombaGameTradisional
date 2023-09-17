@@ -5,34 +5,33 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float runSpeed;
+    private float currSpeed;
     public float horizontalInput { get; private set; }
-    public float verticalInput { get; private set; }
-    [SerializeField] private float rotz;
+    public float verticalInput { get; private set; } 
+    public bool isRunning { get; private set; }
+    public bool isMoving { get; private set; }
     private Camera mainCam;
     private Vector3 mousePos;
     [SerializeField]private float rotateSpeed;
-    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        isMoving = horizontalInput != 0 || verticalInput != 0;
 
+        currSpeed = Input.GetKey(KeyCode.LeftShift) ?  runSpeed :  speed;
+        isRunning = Input.GetKey(KeyCode.LeftShift);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector2(horizontalInput, verticalInput).normalized * speed * Time.deltaTime);
+        transform.Translate(new Vector2(horizontalInput, verticalInput).normalized * currSpeed * Time.deltaTime);
         LightRotation();
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity  = new Vector2(horizontalInput, verticalInput).normalized * speed * Time.fixedDeltaTime * Vector2.right;
     }
 
     private void LightRotation()

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyCheckBehind : MonoBehaviour
 {
     [SerializeField] private float timeBeforeCheck;
     [SerializeField] private float currTime;
     [SerializeField] private float returnTime;
+    [SerializeField] private AIPath aiPath;
     private bool hasRotate = false;
 
     // Start is called before the first frame update
@@ -24,6 +26,7 @@ public class EnemyCheckBehind : MonoBehaviour
             currTime -= Time.deltaTime;
         }else if (currTime <= 0 && !hasRotate)
         {
+            aiPath.updateRotation = false;
             hasRotate = true;
             transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
             StartCoroutine(ReturnRotation());
@@ -33,6 +36,8 @@ public class EnemyCheckBehind : MonoBehaviour
     private IEnumerator ReturnRotation()
     {
         yield return new WaitForSeconds(returnTime);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
+        aiPath.updateRotation = true;
         currTime = timeBeforeCheck;
         hasRotate = false;
     } 

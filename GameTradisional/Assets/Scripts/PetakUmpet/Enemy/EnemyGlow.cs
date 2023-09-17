@@ -16,6 +16,7 @@ public class EnemyGlow : MonoBehaviour
     [SerializeField] private float nextGlow;
     [SerializeField] private float nextGlowTimer;
     [SerializeField] private float countDown;
+    [SerializeField] private EnemyCompass compass;
 
     void Start()
     {
@@ -52,7 +53,6 @@ public class EnemyGlow : MonoBehaviour
             timer = 0;
         }else if(light2D.intensity == 0 && !isFirst && isFirstFinish)
         {
-            
             isOff = false;
             timer = 0;
                 
@@ -70,6 +70,7 @@ public class EnemyGlow : MonoBehaviour
         {
             timer += Time.deltaTime;
             light2D.intensity = Mathf.Lerp(0, 1, timer / lerpDuration);
+            compass.RotateArrow();
         }
         else if(light2D.intensity > 0 && isOff)
         {
