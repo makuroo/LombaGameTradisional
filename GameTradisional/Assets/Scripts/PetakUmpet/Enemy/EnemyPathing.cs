@@ -86,6 +86,8 @@ public class EnemyPathing : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             aiPath.isStopped = true;
+            collision.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            collision.gameObject.GetComponent<Movement>().enabled = false;
         }
     }
 }

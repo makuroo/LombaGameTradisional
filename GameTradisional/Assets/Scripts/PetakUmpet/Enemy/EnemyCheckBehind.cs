@@ -9,6 +9,7 @@ public class EnemyCheckBehind : MonoBehaviour
     [SerializeField] private float currTime;
     [SerializeField] private float returnTime;
     [SerializeField] private AIPath aiPath;
+    [SerializeField] private AIDestinationSetter destination;
     private bool hasRotate = false;
 
     // Start is called before the first frame update
@@ -20,17 +21,21 @@ public class EnemyCheckBehind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (currTime >= 0)
+        if(destination.target==null || !destination.target.CompareTag("Player"))
         {
-            currTime -= Time.deltaTime;
-        }else if (currTime <= 0 && !hasRotate)
-        {
-            aiPath.updateRotation = false;
-            hasRotate = true;
-            transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
-            StartCoroutine(ReturnRotation());
+            if (currTime >= 0)
+            {
+                currTime -= Time.deltaTime;
+            }
+            else if (currTime <= 0 && !hasRotate)
+            {
+                aiPath.updateRotation = false;
+                hasRotate = true;
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
+                StartCoroutine(ReturnRotation());
+            }
         }
+
     }
 
     private IEnumerator ReturnRotation()
