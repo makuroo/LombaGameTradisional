@@ -44,7 +44,6 @@ public class EnemyGlow : MonoBehaviour
 
     }
 
-
     private void AnnouncePresence()
     {
         if(light2D.intensity >= 1)
