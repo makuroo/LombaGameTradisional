@@ -6,6 +6,7 @@ TagManager:
   tags:
   - bambuBambu
   - bambuGround
+  - ketapelHantu
   layers:
   - Default
   - TransparentFX

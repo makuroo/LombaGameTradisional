@@ -13,6 +13,7 @@ public class Bambu : MonoBehaviour
     public float maxRotationAngle = 45.0f;
 
     //ChangeRotationWhenPressed
+    [SerializeField]
     private float currentRotation = 0.0f;
     private float newRotation;
 
@@ -21,6 +22,10 @@ public class Bambu : MonoBehaviour
 
     //KalahAtauTidak
     public int mainBambuGila = 1;
+
+    //OrangKomponen
+    public Transform torso;
+    public Transform head;
 
 
     void Start()
@@ -37,7 +42,9 @@ public class Bambu : MonoBehaviour
 
     void Update()
     {
-        if(mainBambuGila == 1)
+
+
+        if (mainBambuGila == 1)
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -64,6 +71,11 @@ public class Bambu : MonoBehaviour
                 currentRotation += rotationInput * Time.deltaTime;
                 currentRotation = Mathf.Clamp(currentRotation, -maxRotationAngle, maxRotationAngle);
                 transform.rotation = Quaternion.Euler(0, 0, currentRotation);
+                torso.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
+                head.transform.rotation = Quaternion.Euler(0, 0, currentRotation);
+
+
+
             }
         }
 

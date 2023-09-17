@@ -30,6 +30,7 @@ public class QTEButtonBambu : MonoBehaviour
     private int randomIndex;
     private string randomCharacter;
 
+
     //Script
     public Bambu bambuScript;
 
@@ -52,86 +53,89 @@ public class QTEButtonBambu : MonoBehaviour
             }
         }
         
-       
-        if(randomCharacter == "SPACE")
+        if(bambuScript.mainBambuGila == 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && qteActive)
+            if(randomCharacter == "SPACE")
             {
-                qteSuccess();
-            }else if(!Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && qteActive && Input.anyKey)
+                if (Input.GetKeyDown(KeyCode.Space) && qteActive)
+                {
+                    qteSuccess();
+                }else if(!Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && qteActive && Input.anyKey)
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
+            }else if(randomCharacter == "E")
             {
-                qteFailed();
-                Konsekuensi();
+                if (Input.GetKeyDown(KeyCode.E) && qteActive)
+                {
+                    qteSuccess();
+                }
+                else if(!Input.GetKeyDown(KeyCode.E) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
             }
-        }else if(randomCharacter == "E")
-        {
-            if (Input.GetKeyDown(KeyCode.E) && qteActive)
+            else if(randomCharacter == "F")
             {
-                qteSuccess();
+                if (Input.GetKeyDown(KeyCode.F) && qteActive)
+                {
+                    qteSuccess();
+                }
+                else if(!Input.GetKeyDown(KeyCode.F) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
             }
-            else if(!Input.GetKeyDown(KeyCode.E) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            else if(randomCharacter == "M")
             {
-                qteFailed();
-                Konsekuensi();
-            }
-        }
-        else if(randomCharacter == "F")
-        {
-            if (Input.GetKeyDown(KeyCode.F) && qteActive)
-            {
-                qteSuccess();
-            }
-            else if(!Input.GetKeyDown(KeyCode.F) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            {
-                qteFailed();
-                Konsekuensi();
-            }
-        }
-        else if(randomCharacter == "M")
-        {
-            if (Input.GetKeyDown(KeyCode.M) && qteActive)
-            {
-                qteSuccess();
+                if (Input.GetKeyDown(KeyCode.M) && qteActive)
+                {
+                    qteSuccess();
                 
-            }else if(!Input.GetKeyDown(KeyCode.M) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                }else if(!Input.GetKeyDown(KeyCode.M) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
+            }
+            else if(randomCharacter == "K")
             {
-                qteFailed();
-                Konsekuensi();
+                if (Input.GetKeyDown(KeyCode.K) && qteActive)
+                {
+                    qteSuccess();
+                }
+                else if(!Input.GetKeyDown(KeyCode.K) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
+            }else if(randomCharacter == "L")
+            {
+                if (Input.GetKeyDown(KeyCode.L) && qteActive)
+                {
+                    qteSuccess();
+                }else if(!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
+            }else if(randomCharacter == "O")
+            {
+                if (Input.GetKeyDown(KeyCode.O) && qteActive)
+                {
+                    qteSuccess();
+                }
+                else if(!Input.GetKeyDown(KeyCode.O) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                {
+                    qteFailed();
+                    Konsekuensi();
+                }
             }
         }
-        else if(randomCharacter == "K")
-        {
-            if (Input.GetKeyDown(KeyCode.K) && qteActive)
-            {
-                qteSuccess();
-            }
-            else if(!Input.GetKeyDown(KeyCode.K) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            {
-                qteFailed();
-                Konsekuensi();
-            }
-        }else if(randomCharacter == "L")
-        {
-            if (Input.GetKeyDown(KeyCode.L) && qteActive)
-            {
-                qteSuccess();
-            }else if(!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            {
-                qteFailed();
-                Konsekuensi();
-            }
-        }else if(randomCharacter == "O")
-        {
-            if (Input.GetKeyDown(KeyCode.O) && qteActive)
-            {
-                qteSuccess();
-            }
-            else if(!Input.GetKeyDown(KeyCode.O) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-            {
-                qteFailed();
-                Konsekuensi();
-            }
-        }
+
 
 
         if (qteActive)
