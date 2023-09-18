@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Bambu : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class Bambu : MonoBehaviour
     private float newRotation;
 
     //Direction
-    public int randomDirection;
+    public int randomDirectionStrong;
+    public float randomDirectionLemah;
+    public float randomDirectionMid;
+    private float rotationInput;
 
     //KalahAtauTidak
     public int mainBambuGila = 1;
@@ -27,29 +31,78 @@ public class Bambu : MonoBehaviour
     public Transform torso;
     public Transform head;
 
+    public float timer;
+
+    public SpriteRenderer rendererA;
+    public SpriteRenderer rendererD;
+
+    public Light2D[] lightWarna;
+
+
 
     void Start()
     {
-        randomDirection = Random.Range(-1, 2);
-        if(randomDirection == 0)
+        randomDirectionStrong = Random.Range(-1, 2);
+        randomDirectionLemah = (Random.Range(0, 1) == 0) ? -0.2f : 0.2f;
+        randomDirectionMid = (Random.Range(0, 1) == 0) ? -0.6f : 0.6f;
+
+        if (randomDirectionStrong == 0)
         {
-            randomDirection = -1;
-        }else if(randomDirection == 2)
+            randomDirectionStrong = -1;
+        }else if(randomDirectionStrong == 2)
         {
-            randomDirection = 1;
+            randomDirectionStrong = 1;
         }
+
     }
 
     void Update()
     {
 
+        timer = timer + Time.deltaTime;
+
+        for(int i = 0; i < lightWarna.Length; i++)
+        {
+            if(Mathf.Abs(currentRotation) >= 15)
+            {
+                lightWarna[i].color = new Color(1, Mathf.Clamp(lightWarna[i].color.g - Mathf.Abs(currentRotation)/500, 0, 1), Mathf.Clamp(lightWarna[i].color.b - Mathf.Abs(currentRotation)/500, 0, 1));
+            }
+            else
+            {
+                lightWarna[i].color = new Color(1, Mathf.Clamp(lightWarna[i].color.g + Mathf.Abs(currentRotation) / 500, 0, 1), Mathf.Clamp(lightWarna[i].color.b + Mathf.Abs(currentRotation) / 500, 0, 1));
+            }
+
+        }
 
         if (mainBambuGila == 1)
         {
+            if (Input.GetKey(KeyCode.A))
+            {
+                rendererA.color = new Color(rendererA.color.r, rendererA.color.g, rendererA.color.b,1);
+            }
+            else
+            {
+                rendererA.color = new Color(rendererA.color.r, rendererA.color.g, rendererA.color.b, 0.5f);
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                rendererD.color = new Color(rendererA.color.r, rendererA.color.g, rendererA.color.b, 1);
+            }
+            else
+            {
+                rendererD.color = new Color(rendererA.color.r, rendererA.color.g, rendererA.color.b, 0.5f);
+            }
+
+
+
+
+
             if (Input.GetKeyDown(KeyCode.A))
             {
                 //Debug.Log("TekanA");
                 SembanginKeKiri();
+
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
@@ -60,15 +113,31 @@ public class Bambu : MonoBehaviour
             {
                 if (currentRotation < 0)
                 {
-                    randomDirection = -1;
+                    randomDirectionStrong = -1;
+                    randomDirectionLemah = -0.2f;
+                    randomDirectionMid = -0.6f;
                 }
                 else if (currentRotation > 0)
                 {
-                    randomDirection = 1;
+                    randomDirectionStrong = 1;
+                    randomDirectionLemah = 0.2f;
+                    randomDirectionMid = 0.6f;
                 }
 
-                float rotationInput = randomDirection * rotationSpeed;
-                currentRotation += rotationInput * Time.deltaTime;
+                if(timer >= 1 && timer <= 5)
+                {
+                   rotationInput = randomDirectionLemah * rotationSpeed;
+                }else if(timer >= 5 && timer <=15)
+                {
+                    rotationInput = randomDirectionMid * rotationSpeed;
+                }
+                else if(timer >= 15)
+                {
+                    rotationInput = randomDirectionStrong * rotationSpeed;
+                }
+
+                
+                currentRotation += rotationInput * Time.deltaTime ;
                 currentRotation = Mathf.Clamp(currentRotation, -maxRotationAngle, maxRotationAngle);
                 transform.rotation = Quaternion.Euler(0, 0, currentRotation);
                 torso.transform.rotation = Quaternion.Euler(0, 0, currentRotation);

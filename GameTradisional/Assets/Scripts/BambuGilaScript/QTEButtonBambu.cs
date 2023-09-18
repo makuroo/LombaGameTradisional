@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
@@ -16,7 +17,8 @@ public class QTEButtonBambu : MonoBehaviour
     //Random Interval Appear & durasi
     public float minAppearTime = 3f; 
     public float maxAppearTime = 8f; 
-    public float durasiDisplayTime = 5f; //timer qtenya muncul sampe tutup
+    public float durasiDisplayTime; //timer qtenya muncul sampe tutup
+    private float timerGame;
 
     //WarnaButton
     public Color startColor = Color.white;
@@ -26,9 +28,11 @@ public class QTEButtonBambu : MonoBehaviour
     private float appearTimer;
     private float qteTimerDurasi; //timer jalan ketika qtenya muncul
     private bool qteActive = false;
-    private string[] qteText = {"SPACE","E","F","M","K","L","O"};
+    public SpriteRenderer[] keyFolder;
+    public Light2D keyLight;
+    private int indexKey;
     private int randomIndex;
-    private string randomCharacter;
+    public GameObject keyQTE;
 
 
     //Script
@@ -42,20 +46,25 @@ public class QTEButtonBambu : MonoBehaviour
 
     private void Update()
     {
+        timerGame = timerGame + Time.deltaTime;
 
         if(bambuScript.mainBambuGila == 1)
         {
-            appearTimer -= Time.deltaTime;
-
-            if (appearTimer <= 0f && !qteActive)
+            if(timerGame >= 15)
             {
-                ShowQTE();
+                appearTimer -= Time.deltaTime;
+
+                if (appearTimer <= 0f && !qteActive)
+                {
+                    ShowQTE();
+                }
             }
+
         }
         
         if(bambuScript.mainBambuGila == 1)
         {
-            if(randomCharacter == "SPACE")
+            if(indexKey == 0)
             {
                 if (Input.GetKeyDown(KeyCode.Space) && qteActive)
                 {
@@ -65,31 +74,8 @@ public class QTEButtonBambu : MonoBehaviour
                     qteFailed();
                     Konsekuensi();
                 }
-            }else if(randomCharacter == "E")
-            {
-                if (Input.GetKeyDown(KeyCode.E) && qteActive)
-                {
-                    qteSuccess();
-                }
-                else if(!Input.GetKeyDown(KeyCode.E) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
             }
-            else if(randomCharacter == "F")
-            {
-                if (Input.GetKeyDown(KeyCode.F) && qteActive)
-                {
-                    qteSuccess();
-                }
-                else if(!Input.GetKeyDown(KeyCode.F) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
-            }
-            else if(randomCharacter == "M")
+            else if(indexKey == 1)
             {
                 if (Input.GetKeyDown(KeyCode.M) && qteActive)
                 {
@@ -101,7 +87,7 @@ public class QTEButtonBambu : MonoBehaviour
                     Konsekuensi();
                 }
             }
-            else if(randomCharacter == "K")
+            else if(indexKey == 2)
             {
                 if (Input.GetKeyDown(KeyCode.K) && qteActive)
                 {
@@ -112,23 +98,12 @@ public class QTEButtonBambu : MonoBehaviour
                     qteFailed();
                     Konsekuensi();
                 }
-            }else if(randomCharacter == "L")
+            }else if(indexKey == 3)
             {
                 if (Input.GetKeyDown(KeyCode.L) && qteActive)
                 {
                     qteSuccess();
                 }else if(!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
-            }else if(randomCharacter == "O")
-            {
-                if (Input.GetKeyDown(KeyCode.O) && qteActive)
-                {
-                    qteSuccess();
-                }
-                else if(!Input.GetKeyDown(KeyCode.O) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
                 {
                     qteFailed();
                     Konsekuensi();
@@ -164,18 +139,18 @@ public class QTEButtonBambu : MonoBehaviour
 
     public void ShowQTE()
     {
-        randomIndex = Random.Range(0, qteText.Length);
-        randomCharacter = qteText[randomIndex];
-        textQTE.text = randomCharacter;
-        imageQTE.enabled = true;
+        randomIndex = Random.Range(0, keyFolder.Length);
+        indexKey = randomIndex;
+        keyQTE.GetComponent<SpriteRenderer>().sprite = keyFolder[indexKey].sprite;
+        keyLight.lightCookieSprite = keyFolder[indexKey].sprite;
         qteActive = true;
         qteTimerDurasi = durasiDisplayTime;
     }
 
     public void HideQTE()
     {
-        textQTE.text = "";
-        imageQTE.enabled = false;
+        keyQTE.GetComponent<SpriteRenderer>().sprite = null;
+        keyLight.lightCookieSprite = null;
         qteActive = false;
     }
 
@@ -183,12 +158,12 @@ public class QTEButtonBambu : MonoBehaviour
     {
         bambuScript.balanceForce = 30;
 
-        if (bambuScript.randomDirection == 1)
+        if (bambuScript.randomDirectionStrong == 1)
         {
             bambuScript.SembanginKeKiri();
             bambuScript.balanceForce = 3;
         }
-        else if (bambuScript.randomDirection == -1)
+        else if (bambuScript.randomDirectionStrong == -1)
         {
             bambuScript.SembanginKeKanan();
             bambuScript.balanceForce = 3;

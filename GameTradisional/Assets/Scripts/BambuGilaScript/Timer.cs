@@ -23,11 +23,7 @@ public class Timer : MonoBehaviour
 
         if(gameFinished == 0)
         {
-            if(textTimer.text == "5")
-            {
-                Debug.Log("BambuGila is FINISHED");
-                gameFinished = 1;
-            }
+
         }
 
     }

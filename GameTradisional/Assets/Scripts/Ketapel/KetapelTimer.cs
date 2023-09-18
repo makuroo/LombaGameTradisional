@@ -19,7 +19,13 @@ public class KetapelTimer : MonoBehaviour
     private int index = 0;
 
     public GameObject hantu;
+    private int randomValue;
+    private int randomValueLayer4;
+    private int randomValueLayer3;
+    private int randomValueLayer2;
+    private bool gameOver = false;
 
+    bool debugLogGameOver = false;
 
 
     private void Update()
@@ -38,39 +44,78 @@ public class KetapelTimer : MonoBehaviour
 
         }
 
+        randomValueLayer4 = Random.Range(0, 5);
+        randomValueLayer3 = Random.Range(0, 3);
+        randomValueLayer2 = Random.Range(0, 1);
+        randomValue = Random.Range(2, 5);
 
 
-
-        
-        timerHantu += Time.deltaTime;
-        if (timerHantu >= 5)
+        if(gameOver == false)
         {
-            index++;
-            timerHantu = 0;
-            hantu.transform.position = positionList[index].position;
-            //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
-        }
-
-        if(ketapelCursorMovementScript.tembakHitHantu == 3)
-        {
-            if(index != 0)
-            {
-                index--;
-                timerHantu = 0;
-                hantu.transform.position = positionList[index].position;
-                ketapelCursorMovementScript.tembakHitHantu = 0;
-                //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
-            }
-            else
+            timerHantu += Time.deltaTime;
+            if (timerHantu >= 5)
             {
                 index++;
                 timerHantu = 0;
                 hantu.transform.position = positionList[index].position;
-                ketapelCursorMovementScript.tembakHitHantu = 0;
                 //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
             }
 
+            if(ketapelCursorMovementScript.tembakHitHantu == 3)
+            {
+
+                if(index == 6 || index == 7)
+                {
+                    index = randomValueLayer4;
+                    hantu.transform.position = positionList[index].position;
+                    ketapelCursorMovementScript.tembakHitHantu = 0;
+                    //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
+                }else if(index == 4 || index == 5)
+                {
+                    index = randomValueLayer3;
+                    hantu.transform.position = positionList[index].position;
+                    ketapelCursorMovementScript.tembakHitHantu = 0;
+                    //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
+                }else if(index == 2 || index == 3)
+                {
+                    index = randomValueLayer2;
+                    hantu.transform.position = positionList[index].position;
+                    ketapelCursorMovementScript.tembakHitHantu = 0;
+                    //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
+                }else if(index == 0)
+                {
+                    index = randomValue;
+                    hantu.transform.position = positionList[index].position;
+                    ketapelCursorMovementScript.tembakHitHantu = 0;
+                    //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
+                }else if(index == 1)
+                {
+                    index--;
+                    hantu.transform.position = positionList[index].position;
+                    ketapelCursorMovementScript.tembakHitHantu = 0;
+                    //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
+                }
+
+
+            } //tutup if tembakhantu3
+        } //tutup if gameover == false
+
+
+        if(index == 8)
+        {
+            gameOver = true;
+            hantu.transform.position = positionList[index].position;
+            ketapelCursorMovementScript.tembakHitHantu = 0;
+            //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
+            
+            if(debugLogGameOver == false)
+            {
+                Debug.Log("Gameover : KETAPEL");
+                debugLogGameOver = true;
+            }
+            
         }
+
 
     }
 
