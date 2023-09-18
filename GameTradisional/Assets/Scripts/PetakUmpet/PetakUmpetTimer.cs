@@ -15,6 +15,7 @@ public class PetakUmpetTimer : MonoBehaviour
     [SerializeField] Pathfinding.AIPath aiPath;
     [SerializeField]private bool hasIncreaseBlendTime = false;
     private bool hasLookDoor = false;
+    [SerializeField] private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class PetakUmpetTimer : MonoBehaviour
         string formattedText = currMin.ToString("00") + ":" + Mathf.Floor(currSec).ToString("00");
         timerText.text = formattedText;
 
-        if (currMin == 1 && !hasLookDoor)
+        if (currMin == timer && !hasLookDoor)
         {
             camTransition.IncreaseCameraPriority();
             doors[0].eulerAngles = new Vector3(0, 0, -45);

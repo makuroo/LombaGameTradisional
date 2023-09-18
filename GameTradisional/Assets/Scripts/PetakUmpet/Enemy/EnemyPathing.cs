@@ -16,6 +16,7 @@ public class EnemyPathing : MonoBehaviour
     [SerializeField] private Movement playerMovement;
     [SerializeField] private float timeBeforeChasingPlayer = 12f;
     [SerializeField] private float currentTime;
+    [SerializeField] private GameObject distortion;
     // Start is called before the first frame update
 
     private void Awake()
@@ -31,8 +32,11 @@ public class EnemyPathing : MonoBehaviour
     }
     private void Update()
     {
+        if (destinationSetter.target == playerMovement.transform)
+            distortion.SetActive(true);
+
         //prevent player from camping
-        if (playerMovement.horizontalInput == 0 && playerMovement.verticalInput == 0 && playerMovement.enabled)
+        if (playerMovement.horizontalInput == 0 && playerMovement.verticalInput == 0 && playerMovement.enabled && enemyCountdownStatus.isFirstFinish)
         {
             if (currentTime >= 0)
             {

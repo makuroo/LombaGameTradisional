@@ -17,6 +17,7 @@ public class EnemyGlow : MonoBehaviour
     [SerializeField] private float nextGlowTimer;
     [SerializeField] private float countDown;
     [SerializeField] private EnemyCompass compass;
+    public bool startCountDown = false;
 
     void Start()
     {
@@ -25,8 +26,11 @@ public class EnemyGlow : MonoBehaviour
 
     void Update()
     {
-
-        nextGlowTimer += Time.deltaTime;
+        if (startCountDown)
+        {
+            nextGlowTimer += Time.deltaTime;
+        }
+        
         if(nextGlowTimer >= countDown && isFirst)
         {
             isFirst = false;
