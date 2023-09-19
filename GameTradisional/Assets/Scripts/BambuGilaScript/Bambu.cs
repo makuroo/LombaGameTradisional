@@ -63,13 +63,13 @@ public class Bambu : MonoBehaviour
 
         for(int i = 0; i < lightWarna.Length; i++)
         {
-            if(Mathf.Abs(currentRotation) >= 15)
+            if(Mathf.Abs(currentRotation) >= 20)
             {
-                lightWarna[i].color = new Color(1, Mathf.Clamp(lightWarna[i].color.g - Mathf.Abs(currentRotation)/500, 0, 1), Mathf.Clamp(lightWarna[i].color.b - Mathf.Abs(currentRotation)/500, 0, 1));
+                lightWarna[i].color = new Color(1, Mathf.Clamp(lightWarna[i].color.g - Mathf.Abs(currentRotation)/1000, 0, 1), Mathf.Clamp(lightWarna[i].color.b - Mathf.Abs(currentRotation)/1000, 0, 1));
             }
             else
             {
-                lightWarna[i].color = new Color(1, Mathf.Clamp(lightWarna[i].color.g + Mathf.Abs(currentRotation) / 500, 0, 1), Mathf.Clamp(lightWarna[i].color.b + Mathf.Abs(currentRotation) / 500, 0, 1));
+                lightWarna[i].color = new Color(1, Mathf.Clamp(lightWarna[i].color.g + Mathf.Abs(currentRotation) / 300, 0, 1), Mathf.Clamp(lightWarna[i].color.b + + Mathf.Abs(currentRotation) / 300, 0, 1));
             }
 
         }

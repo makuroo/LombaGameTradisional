@@ -30,6 +30,7 @@ public class QTEButtonBambu : MonoBehaviour
     private bool qteActive = false;
     public SpriteRenderer[] keyFolder;
     public Light2D keyLight;
+    public SpriteRenderer spriteKeyQTE;
     private int indexKey;
     private int randomIndex;
     public GameObject keyQTE;
@@ -45,6 +46,73 @@ public class QTEButtonBambu : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (bambuScript.mainBambuGila == 1)
+        {
+            if (qteActive == true)
+            {
+                if (indexKey == 0)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space) && qteActive)
+                    {
+                        qteSuccess();
+                    }
+                    else if (!Input.GetKeyDown(KeyCode.Space) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    {
+                        Debug.Log("WRONG SPACE");
+                        qteFailed();
+                        Konsekuensi();
+                    }
+
+                }
+                else if (indexKey == 1)
+                {
+                    if (Input.GetKeyDown(KeyCode.M) && qteActive)
+                    {
+                        qteSuccess();
+
+                    }
+                    else if (!Input.GetKeyDown(KeyCode.M) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    {
+                        Debug.Log("WRONG M");
+                        qteFailed();
+                        Konsekuensi();
+                    }
+
+                }
+                else if (indexKey == 2)
+                {
+                    if (Input.GetKeyDown(KeyCode.K) && qteActive)
+                    {
+                        qteSuccess();
+                    }
+                    else if (!Input.GetKeyDown(KeyCode.K) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    {
+                        Debug.Log("WRONG K");
+                        qteFailed();
+                        Konsekuensi();
+                    }
+
+                }
+                else if (indexKey == 3)
+                {
+                    if (Input.GetKeyDown(KeyCode.L) && qteActive)
+                    {
+                        qteSuccess();
+                    }
+                    else if (!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    {
+                        Debug.Log("WRONG L");
+                        qteFailed();
+                        Konsekuensi();
+                    }
+                }
+            }
+
+        }
+    }
+
+    private void FixedUpdate()
     {
         timerGame = timerGame + Time.deltaTime;
 
@@ -62,57 +130,6 @@ public class QTEButtonBambu : MonoBehaviour
 
         }
         
-        if(bambuScript.mainBambuGila == 1)
-        {
-            if(indexKey == 0)
-            {
-                if (Input.GetKeyDown(KeyCode.Space) && qteActive)
-                {
-                    qteSuccess();
-                }else if(!Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && qteActive && Input.anyKey)
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
-            }
-            else if(indexKey == 1)
-            {
-                if (Input.GetKeyDown(KeyCode.M) && qteActive)
-                {
-                    qteSuccess();
-                
-                }else if(!Input.GetKeyDown(KeyCode.M) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
-            }
-            else if(indexKey == 2)
-            {
-                if (Input.GetKeyDown(KeyCode.K) && qteActive)
-                {
-                    qteSuccess();
-                }
-                else if(!Input.GetKeyDown(KeyCode.K) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
-            }else if(indexKey == 3)
-            {
-                if (Input.GetKeyDown(KeyCode.L) && qteActive)
-                {
-                    qteSuccess();
-                }else if(!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                {
-                    qteFailed();
-                    Konsekuensi();
-                }
-            }
-        }
-
-
-
         if (qteActive)
         {
             qteTimerDurasi -= Time.deltaTime;
@@ -125,8 +142,11 @@ public class QTEButtonBambu : MonoBehaviour
             }
             else
             {
-                float gradianWarna = 1 - (qteTimerDurasi / durasiDisplayTime);
-                imageQTE.color = Color.Lerp(startColor, endColor, gradianWarna);
+                //float gradianWarna = 1 - (qteTimerDurasi / durasiDisplayTime);
+                //spriteKeyQTE.color = Color.Lerp(startColor, endColor, gradianWarna);
+                spriteKeyQTE.color = new Color(1, Mathf.Clamp(spriteKeyQTE.color.g - durasiDisplayTime/1050, 0, 1), Mathf.Clamp(spriteKeyQTE.color.b - durasiDisplayTime/1050, 0, 1));
+                keyLight.color = new Color(1, Mathf.Clamp(keyLight.color.g - durasiDisplayTime / 1050, 0, 1), Mathf.Clamp(keyLight.color.b - durasiDisplayTime / 1050, 0, 1));
+                keyLight.intensity = keyLight.intensity + Time.deltaTime*5;
             }
         }
 
@@ -141,8 +161,10 @@ public class QTEButtonBambu : MonoBehaviour
     {
         randomIndex = Random.Range(0, keyFolder.Length);
         indexKey = randomIndex;
+        Debug.Log(indexKey);
         keyQTE.GetComponent<SpriteRenderer>().sprite = keyFolder[indexKey].sprite;
         keyLight.lightCookieSprite = keyFolder[indexKey].sprite;
+
         qteActive = true;
         qteTimerDurasi = durasiDisplayTime;
     }
@@ -151,23 +173,31 @@ public class QTEButtonBambu : MonoBehaviour
     {
         keyQTE.GetComponent<SpriteRenderer>().sprite = null;
         keyLight.lightCookieSprite = null;
+        spriteKeyQTE.color = new Color(1, 1, 1);
+        keyLight.color = new Color(1, 1, 1);
         qteActive = false;
+        keyLight.intensity = 5;
+        //durasiDisplayTime = 5;
     }
 
     private void Konsekuensi()
     {
         bambuScript.balanceForce = 30;
 
-        if (bambuScript.randomDirectionStrong == 1)
+        if(bambuScript.mainBambuGila == 1)
         {
-            bambuScript.SembanginKeKiri();
-            bambuScript.balanceForce = 3;
+            if (bambuScript.randomDirectionStrong == 1)
+            {
+                bambuScript.SembanginKeKiri();
+                bambuScript.balanceForce = 3;
+            }
+            else if (bambuScript.randomDirectionStrong == -1)
+            {
+                bambuScript.SembanginKeKanan();
+                bambuScript.balanceForce = 3;
+            }
         }
-        else if (bambuScript.randomDirectionStrong == -1)
-        {
-            bambuScript.SembanginKeKanan();
-            bambuScript.balanceForce = 3;
-        }
+
     }
 
     private void qteSuccess()
