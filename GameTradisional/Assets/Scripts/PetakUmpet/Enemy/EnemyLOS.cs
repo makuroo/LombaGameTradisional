@@ -23,7 +23,7 @@ public class EnemyLOS : MonoBehaviour
         InitializeHitInfo();
         if (CheckHitInfoStatus())
         {
-            if (HitPlayerHitInfoIndex() && transform.GetComponentInParent<AIDestinationSetter>().target != hitInfo[lastDetectPlayerHitInfoIndex].collider.transform)
+            if (HitPlayerHitInfoIndex() && transform.GetComponentInParent<AIDestinationSetter>().target != hitInfo[lastDetectPlayerHitInfoIndex].collider.transform && !hitInfo[lastDetectPlayerHitInfoIndex].collider.GetComponent<PlayerStatus>().IsHiding)
             {
                 Debug.Log("met player");
                 transform.GetComponentInParent<AIDestinationSetter>().target = hitInfo[lastDetectPlayerHitInfoIndex].collider.transform;

@@ -13,10 +13,12 @@ public class PetakUmpetTimer : MonoBehaviour
     private int blendTime;
     [SerializeField] Movement playerMovement;
     [SerializeField] Pathfinding.AIPath aiPath;
+    [SerializeField] EnemyGlow glow;
     [SerializeField]private bool hasIncreaseBlendTime = false;
+    [SerializeField] private GameObject doorLight;
     private bool hasLookDoor = false;
     [SerializeField] private float timer;
-    private KeyCode key;
+    public bool startTimer  = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,11 @@ public class PetakUmpetTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currSec += Time.deltaTime;
+        if (startTimer)
+        {
+            currSec += Time.deltaTime;
+        }
+        
         if (currSec >= 60)
         {
             currSec = 0;
@@ -38,6 +44,7 @@ public class PetakUmpetTimer : MonoBehaviour
 
         if (currMin == timer && !hasLookDoor)
         {
+            playerMovement.canGetOut = true;
             camTransition.IncreaseCameraPriority();
             doors[0].eulerAngles = new Vector3(0, 0, -45);
             doors[1].eulerAngles = new Vector3(0, 0, 45);
@@ -60,6 +67,7 @@ public class PetakUmpetTimer : MonoBehaviour
         yield return new WaitForSeconds(2);
         if (blendTime < 2)
         {
+            doorLight.SetActive(true);
             if (!hasLookDoor)
                 hasLookDoor = true;
             camTransition.DecreaseCameraPriority();
