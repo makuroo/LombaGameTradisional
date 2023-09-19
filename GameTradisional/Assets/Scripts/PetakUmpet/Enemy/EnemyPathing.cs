@@ -17,6 +17,7 @@ public class EnemyPathing : MonoBehaviour
     [SerializeField] private float timeBeforeChasingPlayer = 12f;
     [SerializeField] private float currentTime;
     [SerializeField] private GameObject distortion;
+    [SerializeField] private AudioManager audioManager;
     // Start is called before the first frame update
 
     private void Awake()
@@ -33,7 +34,10 @@ public class EnemyPathing : MonoBehaviour
     private void Update()
     {
         if (destinationSetter.target == playerMovement.transform)
+        {
             distortion.SetActive(true);
+            audioManager.SetPitch("NormalBGM",2);
+        }   
 
         //prevent player from camping
         if (playerMovement.horizontalInput == 0 && playerMovement.verticalInput == 0 && playerMovement.enabled && enemyCountdownStatus.isFirstFinish)

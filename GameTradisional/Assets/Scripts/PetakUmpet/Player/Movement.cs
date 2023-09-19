@@ -14,13 +14,12 @@ public class Movement : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
     [SerializeField]private float rotateSpeed;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,13 +33,13 @@ public class Movement : MonoBehaviour
         currSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : speed;
         isRunning = Input.GetKey(KeyCode.LeftShift);
 
-        if (isMoving && !audioSource.isPlaying)
-            audioSource.PlayOneShot(audioSource.clip);
+        if (isMoving)
+            audioManager.PlayOneShot("Walk");
 
         if (isRunning)
-            audioSource.pitch = 2;
+            audioManager.SetPitch("Walk", 2);
         else
-            audioSource.pitch = 1;
+            audioManager.SetPitch("Walk", 1);
 
         transform.Translate(new Vector2(horizontalInput, verticalInput).normalized * currSpeed * Time.deltaTime);
         LightRotation();

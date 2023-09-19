@@ -16,6 +16,7 @@ public class PetakUmpetTimer : MonoBehaviour
     [SerializeField]private bool hasIncreaseBlendTime = false;
     private bool hasLookDoor = false;
     [SerializeField] private float timer;
+    private KeyCode key;
 
     // Start is called before the first frame update
     void Start()

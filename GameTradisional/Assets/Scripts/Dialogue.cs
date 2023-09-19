@@ -32,5 +32,8 @@ public class Dialogue : MonoBehaviour
         playerText.text = "Tempat ini gelap sekali, Senter ini sepertinya akan membantu aku";
         playerlight.enabled = true;
         glow.startCountDown = true;
+        yield return new WaitForSeconds(2);
+        playerText.text = "";
+        ghostText.text = "";
     }
 }
