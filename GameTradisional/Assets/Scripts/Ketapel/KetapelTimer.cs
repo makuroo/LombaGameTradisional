@@ -16,6 +16,7 @@ public class KetapelTimer : MonoBehaviour
     private Transform[] positionList;
     [SerializeField]
     private Sprite[] spriteList;
+    [SerializeField]
     private int index = 0;
 
     public GameObject hantu;
@@ -27,6 +28,10 @@ public class KetapelTimer : MonoBehaviour
 
     bool debugLogGameOver = false;
 
+    private void Start()
+    {
+
+    }
 
     private void Update()
     {
@@ -37,6 +42,7 @@ public class KetapelTimer : MonoBehaviour
 
         string timerText = Mathf.Floor(timer).ToString();
         textTimer.text = timerText;
+
 
         if (gameFinished == 0)
         {
@@ -52,6 +58,26 @@ public class KetapelTimer : MonoBehaviour
 
         if(gameOver == false)
         {
+
+
+                
+            if (index == 7 || index == 6)
+            {
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 5;
+            }
+            else if (index == 3 || index == 5)
+            {
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 4;
+            }else if(index == 8)
+            {
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 6;
+            }
+            else 
+            { 
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            }
+
+
             timerHantu += Time.deltaTime;
             if (timerHantu >= 5)
             {
@@ -90,7 +116,7 @@ public class KetapelTimer : MonoBehaviour
                     //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
                 }else if(index == 1)
                 {
-                    index--;
+                    index = randomValue;
                     hantu.transform.position = positionList[index].position;
                     ketapelCursorMovementScript.tembakHitHantu = 0;
                     //hantu.GetComponent<SpriteRenderer>().sprite = spriteList[index];
