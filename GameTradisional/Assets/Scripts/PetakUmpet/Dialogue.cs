@@ -17,6 +17,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private PetakUmpetTimer timer;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private TutorialPetakUmpet tutorial;
+    [SerializeField] private GameObject timelinePanel;
     [SerializeField] private GameObject firstCanvas;
     private bool isStartLerp = false;
 
@@ -70,7 +71,9 @@ public class Dialogue : MonoBehaviour
     }
     private IEnumerator WaitForStartCutscene()
     {
-        yield return new WaitForSeconds(40);
+        yield return new WaitForSeconds(37);
+        timelinePanel.SetActive(false);
+        yield return new WaitForSeconds(3);
         firstCanvas.SetActive(false);
         StartCoroutine(StartDialogue());
         petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
