@@ -65,8 +65,6 @@ public class QTEButtonBambu : MonoBehaviour
         if (bambuScript.mainBambuGila == 1)
         {
 
-
-
             if (qteActive == true)
             {
                 if (indexKey == 0)
@@ -148,6 +146,7 @@ public class QTEButtonBambu : MonoBehaviour
             {
                 if (timerGame >= 31)
                 {
+                    Debug.Log("a");
                     appearTimer -= Time.deltaTime;
 
                     if (appearTimer <= 0f && !qteActive)

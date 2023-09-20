@@ -16,6 +16,7 @@ public class KetapelCursorMovement : MonoBehaviour
     private bool readyToShoot;
 
     public SpriteRenderer bekasTembak;
+    public GameObject batu;
 
     private void Update()
     {
@@ -67,6 +68,7 @@ public class KetapelCursorMovement : MonoBehaviour
                 {
                     if (hit.collider.CompareTag("ketapelHantu"))
                     {
+                        Instantiate(batu, position2D, Quaternion.identity);
                         Debug.Log("Hit Hantu");
                         tembakHitHantu++;
                     }else
