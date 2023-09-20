@@ -18,6 +18,8 @@ public class KetapelTimer : MonoBehaviour
     private Sprite[] spriteList;
     [SerializeField]
     private int index = 0;
+    [SerializeField]
+    private UI jumpScare;
 
     public GameObject hantu;
     private int randomValue;
@@ -67,9 +69,12 @@ public class KetapelTimer : MonoBehaviour
                 hantu.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
             }
                 
-            if (index == 7 || index == 6)
+            if (index == 7)
             {
                 hantu.GetComponent<SpriteRenderer>().sortingOrder = 5;
+            }else if(index == 6)
+            {
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 6;
             }
             else if (index == 3 || index == 5)
             {
@@ -81,7 +86,7 @@ public class KetapelTimer : MonoBehaviour
             }
             else 
             { 
-                hantu.GetComponent<SpriteRenderer>().sortingOrder = 3;
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 5;
             }
 
 
@@ -145,6 +150,7 @@ public class KetapelTimer : MonoBehaviour
             {
                 Debug.Log("Gameover : KETAPEL");
                 debugLogGameOver = true;
+                jumpScare.isDead = debugLogGameOver;
             }
             
         }

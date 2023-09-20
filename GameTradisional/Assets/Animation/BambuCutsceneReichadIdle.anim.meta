@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: cd484f9d19a6ed84aaf29eefc88b7b1a
 folderAsset: yes
 DefaultImporter:
+=======
+guid: b47a5e0591bae1248847f921b4aaa19e
+NativeFormatImporter:
+>>>>>>> Stashed changes
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 
