@@ -18,6 +18,7 @@ public class EnemyPathing : MonoBehaviour
     [SerializeField] private float currentTime;
     [SerializeField] private GameObject distortion;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private UI ui;
     // Start is called before the first frame update
 
     private void Awake()
@@ -93,9 +94,7 @@ public class EnemyPathing : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            aiPath.isStopped = true;
-            collision.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            collision.gameObject.GetComponent<Movement>().enabled = false;
+            ui.isDead = true;
         }
     }
 }

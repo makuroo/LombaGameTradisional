@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Movement : MonoBehaviour
     private Vector3 mousePos;
     [SerializeField]private float rotateSpeed;
     [SerializeField] private AudioManager audioManager;
+    public bool canGetOut = false;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +50,18 @@ public class Movement : MonoBehaviour
     private void LightRotation()
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 rotation = (mousePos - transform.position);
-        transform.up = rotation;
+        if (Vector2.Distance(transform.position, mousePos) > 1)
+        {
+            Vector2 rotation = (mousePos - transform.position);
+            transform.up = rotation;
+        }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("OutGate") && canGetOut)
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
 }

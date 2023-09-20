@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class EnemyGlow : MonoBehaviour
 {
@@ -17,11 +18,17 @@ public class EnemyGlow : MonoBehaviour
     [SerializeField] private float nextGlowTimer;
     [SerializeField] private float countDown;
     [SerializeField] private EnemyCompass compass;
+    [SerializeField] private GameObject timerObject;
+    [SerializeField] private Image ghostCountDown;
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private List<Sprite> countDownSprite;
     public bool startCountDown = false;
 
-    void Start()
+    public Dictionary<int, Sprite> countdownDict = new();
+
+    private void Start()
     {
-        
+
     }
 
     void Update()
@@ -29,17 +36,25 @@ public class EnemyGlow : MonoBehaviour
         if (startCountDown)
         {
             nextGlowTimer += Time.deltaTime;
+            ghostCountDown.enabled = true;
         }
         
         if(nextGlowTimer >= countDown && isFirst)
         {
+            startCountDown = false;
             isFirst = false;
             isAnnounce = true;
             nextGlowTimer = 0;
+            ghostCountDown.enabled = false;
+            timerObject.SetActive(true);
         }
             
         if (nextGlowTimer >= nextGlow && !isFirst)
+        {
             isAnnounce = true;
+            audioManager.PlayOneShot("WeweGombel");
+        }
+            
 
         if (isAnnounce)
         {
@@ -47,6 +62,7 @@ public class EnemyGlow : MonoBehaviour
             AnnouncePresence();
         }
 
+        ghostCountDown.sprite = countDownSprite[Mathf.FloorToInt(nextGlowTimer)];
     }
 
     private void AnnouncePresence()
@@ -67,6 +83,7 @@ public class EnemyGlow : MonoBehaviour
             isOff = false;
             timer = 0;
             isAnnounce = false;
+
         }
 
 
