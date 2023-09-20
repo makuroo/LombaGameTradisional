@@ -59,7 +59,13 @@ public class KetapelTimer : MonoBehaviour
         if(gameOver == false)
         {
 
-
+            if(index == 7)
+            {
+                hantu.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
+            }else if(index!=7 || index != 8)
+            {
+                hantu.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+            }
                 
             if (index == 7 || index == 6)
             {
@@ -71,6 +77,7 @@ public class KetapelTimer : MonoBehaviour
             }else if(index == 8)
             {
                 hantu.GetComponent<SpriteRenderer>().sortingOrder = 6;
+                hantu.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             }
             else 
             { 

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class Bambu : MonoBehaviour
 {
@@ -38,7 +40,8 @@ public class Bambu : MonoBehaviour
 
     public Light2D[] lightWarna;
 
-
+    public PlayableDirector cutsceneGameover;
+    public PlayableDirector cutsceneRestart;
 
     void Start()
     {
@@ -156,7 +159,20 @@ public class Bambu : MonoBehaviour
         {
             mainBambuGila = 0;
             Debug.Log("GAME OVER : BambuGila");
+            PlayerPrefs.SetInt("BambuPlayedOnce", 1);
+            cutsceneGameover.Play();
+            StartCoroutine(delayLoadScene());
+
+
+
         }
+    }
+
+    private IEnumerator delayLoadScene()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(2);
+        cutsceneRestart.Play();
     }
 
     public void SembanginKeKiri()

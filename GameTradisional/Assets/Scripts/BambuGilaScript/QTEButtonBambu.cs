@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
@@ -15,8 +16,8 @@ public class QTEButtonBambu : MonoBehaviour
     public Image imageQTE;
 
     //Random Interval Appear & durasi
-    public float minAppearTime = 3f; 
-    public float maxAppearTime = 8f; 
+    public float minAppearTime = 3f;
+    public float maxAppearTime = 8f;
     public float durasiDisplayTime; //timer qtenya muncul sampe tutup
     private float timerGame;
 
@@ -35,20 +36,37 @@ public class QTEButtonBambu : MonoBehaviour
     private int randomIndex;
     public GameObject keyQTE;
 
+    private int bambuPref;
+    public GameObject reichadGameplay;
 
     //Script
     public Bambu bambuScript;
 
+    public PlayableDirector cutsceneVictory;
     private void Start()
     {
         HideQTE();
         RandomWaktuMuncul();
+        bambuPref = PlayerPrefs.GetInt("BambuPlayedOnce");
+
     }
 
     private void Update()
     {
+        if (timerGame >= 30)
+        {
+            bambuScript.mainBambuGila = 0;
+            cutsceneVictory.Play();
+            HideQTE();
+            StartCoroutine(disableGameplayVictory());
+        }
+
+
         if (bambuScript.mainBambuGila == 1)
         {
+
+
+
             if (qteActive == true)
             {
                 if (indexKey == 0)
@@ -112,46 +130,74 @@ public class QTEButtonBambu : MonoBehaviour
         }
     }
 
+    private IEnumerator disableGameplayVictory()
+    {
+        yield return new WaitForSeconds(2.3f);
+        reichadGameplay.SetActive(false);
+
+    }
+
     private void FixedUpdate()
     {
         timerGame = timerGame + Time.deltaTime;
 
-        if(bambuScript.mainBambuGila == 1)
+        if (bambuScript.mainBambuGila == 1)
         {
-            if(timerGame >= 15)
-            {
-                appearTimer -= Time.deltaTime;
 
-                if (appearTimer <= 0f && !qteActive)
+            if (bambuPref == 0)
+            {
+                if (timerGame >= 31)
                 {
-                    ShowQTE();
+                    appearTimer -= Time.deltaTime;
+
+                    if (appearTimer <= 0f && !qteActive)
+                    {
+                        ShowQTE();
+                    }
+                }
+            } else if (bambuPref == 1)
+            {
+                if (timerGame >= 15)
+                {
+                    appearTimer -= Time.deltaTime;
+
+                    if (appearTimer <= 0f && !qteActive)
+                    {
+                        ShowQTE();
+                    }
+                }
+
+
+
+
+
+            }
+
+            if (qteActive)
+            {
+                qteTimerDurasi -= Time.deltaTime;
+                if (qteTimerDurasi <= 0f)
+                {
+                    Debug.Log("Gagal QUICK TIME EVENT : BAMBU");
+                    Konsekuensi();
+                    HideQTE();
+                    RandomWaktuMuncul();
+                }
+                else
+                {
+                    //float gradianWarna = 1 - (qteTimerDurasi / durasiDisplayTime);
+                    //spriteKeyQTE.color = Color.Lerp(startColor, endColor, gradianWarna);
+                    spriteKeyQTE.color = new Color(1, Mathf.Clamp(spriteKeyQTE.color.g - durasiDisplayTime / 1050, 0, 1), Mathf.Clamp(spriteKeyQTE.color.b - durasiDisplayTime / 1050, 0, 1));
+                    keyLight.color = new Color(1, Mathf.Clamp(keyLight.color.g - durasiDisplayTime / 1050, 0, 1), Mathf.Clamp(keyLight.color.b - durasiDisplayTime / 1050, 0, 1));
+                    keyLight.intensity = keyLight.intensity + Time.deltaTime * 5;
                 }
             }
 
-        }
-        
-        if (qteActive)
-        {
-            qteTimerDurasi -= Time.deltaTime;
-            if (qteTimerDurasi <= 0f)
-            {
-                Debug.Log("Gagal QUICK TIME EVENT : BAMBU");
-                Konsekuensi();
-                HideQTE();
-                RandomWaktuMuncul();
-            }
-            else
-            {
-                //float gradianWarna = 1 - (qteTimerDurasi / durasiDisplayTime);
-                //spriteKeyQTE.color = Color.Lerp(startColor, endColor, gradianWarna);
-                spriteKeyQTE.color = new Color(1, Mathf.Clamp(spriteKeyQTE.color.g - durasiDisplayTime/1050, 0, 1), Mathf.Clamp(spriteKeyQTE.color.b - durasiDisplayTime/1050, 0, 1));
-                keyLight.color = new Color(1, Mathf.Clamp(keyLight.color.g - durasiDisplayTime / 1050, 0, 1), Mathf.Clamp(keyLight.color.b - durasiDisplayTime / 1050, 0, 1));
-                keyLight.intensity = keyLight.intensity + Time.deltaTime*5;
-            }
-        }
+        } //tutup update
 
-    } //tutup update
 
+
+    }
     private void RandomWaktuMuncul()
     {
         appearTimer = Random.Range(minAppearTime, maxAppearTime);
@@ -184,7 +230,7 @@ public class QTEButtonBambu : MonoBehaviour
     {
         bambuScript.balanceForce = 30;
 
-        if(bambuScript.mainBambuGila == 1)
+        if (bambuScript.mainBambuGila == 1)
         {
             if (bambuScript.randomDirectionStrong == 1)
             {
@@ -213,5 +259,4 @@ public class QTEButtonBambu : MonoBehaviour
         HideQTE();
         RandomWaktuMuncul();
     }
-
 }
