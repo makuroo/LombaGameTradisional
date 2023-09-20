@@ -23,12 +23,7 @@ public class Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!firstCanvas.activeInHierarchy)
-        {
-            StartCoroutine(StartDialogue());
-            petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
-            petakUmpetImage.canvasRenderer.SetAlpha(0);
-        }
+        StartCoroutine(WaitForStartCutscene());
 
     }
 
@@ -72,5 +67,13 @@ public class Dialogue : MonoBehaviour
         timer.startTimer = true;
         tutorial.gameObject.SetActive(true);
         tutorial.startTimer = true;
+    }
+    private IEnumerator WaitForStartCutscene()
+    {
+        yield return new WaitForSeconds(40);
+        firstCanvas.SetActive(false);
+        StartCoroutine(StartDialogue());
+        petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
+        petakUmpetImage.canvasRenderer.SetAlpha(0);
     }
 }
