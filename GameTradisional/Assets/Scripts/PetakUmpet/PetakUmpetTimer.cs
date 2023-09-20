@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class PetakUmpetTimer : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class PetakUmpetTimer : MonoBehaviour
             doors[1].eulerAngles = new Vector3(0, 0, 45);
             playerMovement.enabled = false;
             aiPath.isStopped = true;
+            doorLight.GetComponent<Light2D>().enabled = true;
         }
 
         if (camTransition.finishedBlend && !hasIncreaseBlendTime)

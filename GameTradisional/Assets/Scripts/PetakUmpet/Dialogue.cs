@@ -17,15 +17,19 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private PetakUmpetTimer timer;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private TutorialPetakUmpet tutorial;
-    private float currCount = 0;
+    [SerializeField] private GameObject firstCanvas;
     private bool isStartLerp = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(StartDialogue());
-        petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
-        petakUmpetImage.canvasRenderer.SetAlpha(0);
+        if (!firstCanvas.activeInHierarchy)
+        {
+            StartCoroutine(StartDialogue());
+            petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
+            petakUmpetImage.canvasRenderer.SetAlpha(0);
+        }
+
     }
 
     // Update is called once per frame
