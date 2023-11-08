@@ -94,7 +94,9 @@ public class EnemyPathing : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            Debug.Log("ssss");
             ui.isDead = true;
+           // PlayerPrefs.SetInt("prefPetakUmpet", 1);
         }
     }
 }

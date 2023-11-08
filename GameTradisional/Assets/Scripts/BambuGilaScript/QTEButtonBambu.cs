@@ -41,6 +41,7 @@ public class QTEButtonBambu : MonoBehaviour
 
     //Script
     public Bambu bambuScript;
+    public bool buttonMenang;
 
     public PlayableDirector cutsceneVictory;
     private void Start()
@@ -53,7 +54,15 @@ public class QTEButtonBambu : MonoBehaviour
 
     private void Update()
     {
-        if (timerGame >= 30)
+        if (timerGame >= 180)
+        {
+            bambuScript.mainBambuGila = 0;
+            cutsceneVictory.Play();
+            HideQTE();
+            StartCoroutine(disableGameplayVictory());
+        }
+
+        if(buttonMenang == true)
         {
             bambuScript.mainBambuGila = 0;
             cutsceneVictory.Play();
@@ -73,7 +82,7 @@ public class QTEButtonBambu : MonoBehaviour
                     {
                         qteSuccess();
                     }
-                    else if (!Input.GetKeyDown(KeyCode.Space) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    else if (!Input.GetKeyDown(KeyCode.Space) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse2))
                     {
                         Debug.Log("WRONG SPACE");
                         qteFailed();
@@ -88,7 +97,7 @@ public class QTEButtonBambu : MonoBehaviour
                         qteSuccess();
 
                     }
-                    else if (!Input.GetKeyDown(KeyCode.M) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    else if (!Input.GetKeyDown(KeyCode.M) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse2))
                     {
                         Debug.Log("WRONG M");
                         qteFailed();
@@ -102,7 +111,7 @@ public class QTEButtonBambu : MonoBehaviour
                     {
                         qteSuccess();
                     }
-                    else if (!Input.GetKeyDown(KeyCode.K) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    else if (!Input.GetKeyDown(KeyCode.K) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse2))
                     {
                         Debug.Log("WRONG K");
                         qteFailed();
@@ -116,7 +125,7 @@ public class QTEButtonBambu : MonoBehaviour
                     {
                         qteSuccess();
                     }
-                    else if (!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+                    else if (!Input.GetKeyDown(KeyCode.L) && qteActive && Input.anyKey && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse2))
                     {
                         Debug.Log("WRONG L");
                         qteFailed();
@@ -130,7 +139,7 @@ public class QTEButtonBambu : MonoBehaviour
 
     private IEnumerator disableGameplayVictory()
     {
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(2f);
         reichadGameplay.SetActive(false);
 
     }
@@ -156,7 +165,7 @@ public class QTEButtonBambu : MonoBehaviour
                 }
             } else if (bambuPref == 1)
             {
-                if (timerGame >= 15)
+                if (timerGame >= 31)
                 {
                     appearTimer -= Time.deltaTime;
 

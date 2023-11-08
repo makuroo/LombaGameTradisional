@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Playables;
 
 public class PetakUmpetTimer : MonoBehaviour
 {
@@ -21,15 +22,33 @@ public class PetakUmpetTimer : MonoBehaviour
     [SerializeField] private float timer;
     public bool startTimer  = false;
 
+    private int playerPrefPetakUmpet;
+    public PlayableDirector cutsceneIntro;
+    public int DevChange;
+
     // Start is called before the first frame update
     void Start()
     {
         timerText.text = "00:00";
+        playerPrefPetakUmpet = PlayerPrefs.GetInt("prefPetakUmpet");
+        if(playerPrefPetakUmpet == 0)
+        {
+            cutsceneIntro.Play();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(DevChange == 1)
+        {
+            PlayerPrefs.SetInt("prefPetakUmpet", 1);
+        }else if(DevChange == 2)
+        {
+            PlayerPrefs.SetInt("prefPetakUmpet", 0);
+        }
+        
+
         if (startTimer)
         {
             currSec += Time.deltaTime;

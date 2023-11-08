@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,9 +31,10 @@ public class KetapelTimer : MonoBehaviour
 
     bool debugLogGameOver = false;
 
+    public BoxCollider2D boxCollider2D;
+
     private void Start()
     {
-
     }
 
     private void Update()
@@ -60,8 +62,54 @@ public class KetapelTimer : MonoBehaviour
 
         if(gameOver == false)
         {
+            if(index == 0)
+            {
+                Debug.Log("ColliderResize1");
+                boxCollider2D.offset = new Vector2(-1.168127f, -0.1968098f);
+                boxCollider2D.size = new Vector2(2.121198f, 9.384619f);
+            }else if(index == 1)
+            {
+                Debug.Log("ColliderResize2");
+                boxCollider2D.offset = new Vector2(-1.5117f, 2.070802f);
+                boxCollider2D.size = new Vector2(1.708909f, 8.422663f);
+            }
+            else if (index == 2)
+            {
+                Debug.Log("ColliderResize3");
+                boxCollider2D.offset = new Vector2(-0.6871716f, 2.345661f);
+                boxCollider2D.size = new Vector2(1.708914f, 7.872945f);
+            }
+            else if (index == 3)
+            {
+                Debug.Log("ColliderResize4");
+                boxCollider2D.offset = new Vector2(-0.2061207f, 2.414375f);
+                boxCollider2D.size = new Vector2(3.4955f, 7.735516f);
+            }
+            else if (index == 4)
+            {
+                Debug.Log("ColliderResize5");
+                boxCollider2D.offset = new Vector2(0.481024f, 2.414375f);
+                boxCollider2D.size = new Vector2(2.396066f, 7.735516f);
+            }
+            else if (index == 5)
+            {
+                boxCollider2D.offset = new Vector2(1.030741f, 2.414375f);
+                boxCollider2D.size = new Vector2(1.296632f, 7.735516f);
+            }
+            else if (index == 6)
+            {
+                boxCollider2D.offset = new Vector2(1.030736f, 0.00935936f);
+                boxCollider2D.size = new Vector2(2.396073f, 12.54555f);
+            }
+            else if (index == 7)
+            {
+                boxCollider2D.offset = new Vector2(-0.6871318f, 2.185326f);
+                boxCollider2D.size = new Vector2(1.708926f, 8.193613f);
+            }
 
-            if(index == 7)
+
+
+            if (index == 7)
             {
                 hantu.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
             }else if(index!=7 || index != 8)
@@ -69,14 +117,14 @@ public class KetapelTimer : MonoBehaviour
                 hantu.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
             }
                 
-            if (index == 7)
+            if (index == 7 || index == 4)
             {
                 hantu.GetComponent<SpriteRenderer>().sortingOrder = 5;
             }else if(index == 6)
             {
                 hantu.GetComponent<SpriteRenderer>().sortingOrder = 6;
             }
-            else if (index == 3 || index == 5)
+            else if (index == 5)
             {
                 hantu.GetComponent<SpriteRenderer>().sortingOrder = 4;
             }else if(index == 8)
@@ -86,7 +134,7 @@ public class KetapelTimer : MonoBehaviour
             }
             else 
             { 
-                hantu.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                hantu.GetComponent<SpriteRenderer>().sortingOrder = 4;
             }
 
 

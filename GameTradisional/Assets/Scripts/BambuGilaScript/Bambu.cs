@@ -34,6 +34,7 @@ public class Bambu : MonoBehaviour
     public Transform head;
 
     public float timer;
+    int once = 0;
 
     public SpriteRenderer rendererA;
     public SpriteRenderer rendererD;
@@ -155,7 +156,8 @@ public class Bambu : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("bambuGround"))
+        
+        if (collision.CompareTag("bambuGround") && once == 0)
         {
             mainBambuGila = 0;
             Debug.Log("GAME OVER : BambuGila");
@@ -163,7 +165,7 @@ public class Bambu : MonoBehaviour
             cutsceneGameover.Play();
             StartCoroutine(delayLoadScene());
 
-
+            //once = 1;
 
         }
     }
@@ -171,8 +173,9 @@ public class Bambu : MonoBehaviour
     private IEnumerator delayLoadScene()
     {
         yield return new WaitForSeconds(4);
+        Debug.Log("delayloadscenekerja");
         SceneManager.LoadScene(2);
-        cutsceneRestart.Play();
+        //cutsceneRestart.Play();
     }
 
     public void SembanginKeKiri()

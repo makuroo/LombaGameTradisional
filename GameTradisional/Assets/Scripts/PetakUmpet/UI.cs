@@ -22,16 +22,33 @@ public class UI : MonoBehaviour
     public bool isPaused = false;
     public bool isDead = false;
 
+    private string sceneName;
+
     // Start is called before the first frame update
     void Start()
     {
-                
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+        if(sceneName == "PetakUmpet")
+        {
+            if (!isDead)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    isPaused = !isPaused;
+                    Time.timeScale = isPaused ? 0 : 1;
+                }
+                pausePanel.SetActive(isPaused);
+            }
+            else
+            {
+                StartCoroutine(DeadCoroutine());
+            }
+        }else if(sceneName == "BambuGila")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -39,11 +56,23 @@ public class UI : MonoBehaviour
                 Time.timeScale = isPaused ? 0 : 1;
             }
             pausePanel.SetActive(isPaused);
-        }
-        else
+        }else if(sceneName == "ketapel")
         {
-            StartCoroutine(DeadCoroutine());
+            if (!isDead)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    isPaused = !isPaused;
+                    Time.timeScale = isPaused ? 0 : 1;
+                }
+                pausePanel.SetActive(isPaused);
+            }
+            else
+            {
+                StartCoroutine(DeadCoroutine());
+            }
         }
+
     }
     public void Options()
     {
@@ -57,7 +86,17 @@ public class UI : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(1);
+        if(sceneName == "PetakUmpet")
+        {
+            SceneManager.LoadScene(1);
+        }else if(sceneName == "BambuGila")
+        {
+            SceneManager.LoadScene(2);
+        }else if(sceneName == "ketapel")
+        {
+            SceneManager.LoadScene(3);
+        }
+
         Time.timeScale = 1;
     }
 

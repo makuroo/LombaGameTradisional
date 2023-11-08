@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CutsceneManager : MonoBehaviour
     public GameObject folderGameplay;
     public GameObject reichadJalan;
 
+    public PlayableDirector cutsceneRetry;
 
     void Start()
     {
@@ -19,6 +21,7 @@ public class CutsceneManager : MonoBehaviour
         playerPrefBambu = PlayerPrefs.GetInt("BambuPlayedOnce");
         if(playerPrefBambu == 1)
         {
+            cutsceneRetry.Play();
             cutscene.SetActive(false);
             folderCutscene.SetActive(false);
             folderGameplay.SetActive(true);

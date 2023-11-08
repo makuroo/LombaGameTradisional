@@ -20,24 +20,29 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject timelinePanel;
     [SerializeField] private GameObject firstCanvas;
     private bool isStartLerp = false;
+    private int prefPetakUmpet;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(WaitForStartCutscene());
+       
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+
         if (isStartLerp)
         {
             isStartLerp = false;
             petakUmpetImage.CrossFadeAlpha(1, 2, false);
         }
 
-        if (petakUmpetImage.color.a >= 1 && petakUmpetImage.canvasRenderer.GetAlpha()==1)
+        if (petakUmpetImage.color.a >= 1 && petakUmpetImage.canvasRenderer.GetAlpha()==1 )
         {
             petakUmpetCanvas.SetActive(false);
             timerWarningCanvas.SetActive(true);
@@ -71,12 +76,25 @@ public class Dialogue : MonoBehaviour
     }
     private IEnumerator WaitForStartCutscene()
     {
-        yield return new WaitForSeconds(37);
-        timelinePanel.SetActive(false);
-        yield return new WaitForSeconds(3);
-        firstCanvas.SetActive(false);
-        StartCoroutine(StartDialogue());
-        petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
-        petakUmpetImage.canvasRenderer.SetAlpha(0);
+        prefPetakUmpet = PlayerPrefs.GetInt("prefPetakUmpet");
+        if (prefPetakUmpet == 0)
+        {
+            yield return new WaitForSeconds(37);
+            timelinePanel.SetActive(false);
+            yield return new WaitForSeconds(3);
+            firstCanvas.SetActive(false);
+            StartCoroutine(StartDialogue());
+            petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
+            petakUmpetImage.canvasRenderer.SetAlpha(0);
+        }
+        else if(prefPetakUmpet == 1)
+        {
+            firstCanvas.SetActive(false);
+            timelinePanel.SetActive(false);
+            StartCoroutine(StartDialogue());
+            petakUmpetImage = petakUmpetCanvas.GetComponentInChildren<Image>();
+            petakUmpetImage.canvasRenderer.SetAlpha(0);
+        }
+
     }
 }
