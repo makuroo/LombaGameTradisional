@@ -21,28 +21,31 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject firstCanvas;
     private bool isStartLerp = false;
     private int prefPetakUmpet;
+    [SerializeField] private bool resetPetakUmpetPref;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (resetPetakUmpetPref)
+            PlayerPrefs.SetInt("prefPetakUmpet",0);
+        petakUmpetImage.CrossFadeAlpha(0, 0, true);
         StartCoroutine(WaitForStartCutscene());
-       
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
         if (isStartLerp)
         {
             isStartLerp = false;
-            petakUmpetImage.CrossFadeAlpha(1, 2, false);
+            if (petakUmpetImage.color.a <= 0)
+            {
+                petakUmpetImage.CrossFadeAlpha(1, 2, true);
+                Debug.Log(petakUmpetImage.color.a);
+            }
         }
 
-        if (petakUmpetImage.color.a >= 1 && petakUmpetImage.canvasRenderer.GetAlpha()==1 )
+        if (petakUmpetImage.color.a >= 1 && petakUmpetImage.canvasRenderer.GetAlpha()==1)
         {
             petakUmpetCanvas.SetActive(false);
             timerWarningCanvas.SetActive(true);
@@ -65,6 +68,7 @@ public class Dialogue : MonoBehaviour
         ghostText.text = "";
         petakUmpetCanvas.SetActive(true);
         isStartLerp = true;
+        petakUmpetImage.CrossFadeAlpha(1, 2, true);
         yield return new WaitForSeconds(5);
         petakUmpetImage.canvasRenderer.SetAlpha(0);
         timerWarningCanvas.SetActive(false);
