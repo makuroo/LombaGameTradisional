@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
@@ -42,6 +43,7 @@ public class Movement : MonoBehaviour
             audioManager.SetPitch("Walk", 2);
         else
             audioManager.SetPitch("Walk", 1);
+
 
         transform.Translate(new Vector2(horizontalInput, verticalInput).normalized * currSpeed * Time.deltaTime);
         LightRotation();

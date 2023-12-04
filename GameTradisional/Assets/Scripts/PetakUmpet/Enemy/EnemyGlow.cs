@@ -51,8 +51,14 @@ public class EnemyGlow : MonoBehaviour
             
         if (nextGlowTimer >= nextGlow && !isFirst)
         {
+            Debug.Log("here");
             isAnnounce = true;
             audioManager.PlayOneShot("WeweGombel");
+            nextGlowTimer = 0;
+        }
+        else if(!isFirst && nextGlowTimer < nextGlow)
+        {
+            nextGlowTimer += Time.deltaTime;
         }
             
 
