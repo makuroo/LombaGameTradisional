@@ -62,15 +62,15 @@ public class PetakUmpetTimer : MonoBehaviour
         string formattedText = currMin.ToString("00") + ":" + Mathf.Floor(currSec).ToString("00");
         timerText.text = formattedText;
 
-        if (currMin == timer && !hasLookDoor)
+        if (currMin >= timer && !hasLookDoor)
         {
             playerMovement.canGetOut = true;
             camTransition.IncreaseCameraPriority();
+            doorLight.GetComponent<Light2D>().enabled = true;
             doors[0].eulerAngles = new Vector3(0, 0, -45);
             doors[1].eulerAngles = new Vector3(0, 0, 45);
             playerMovement.enabled = false;
             aiPath.isStopped = true;
-            doorLight.GetComponent<Light2D>().enabled = true;
         }
 
         if (camTransition.finishedBlend && !hasIncreaseBlendTime)
@@ -85,10 +85,10 @@ public class PetakUmpetTimer : MonoBehaviour
 
     private IEnumerator WaitForBlend()
     {
-        yield return new WaitForSeconds(2);
+        doorLight.SetActive(true);
+        yield return new WaitForSeconds(3);
         if (blendTime < 2)
         {
-            doorLight.SetActive(true);
             if (!hasLookDoor)
                 hasLookDoor = true;
             camTransition.DecreaseCameraPriority();
