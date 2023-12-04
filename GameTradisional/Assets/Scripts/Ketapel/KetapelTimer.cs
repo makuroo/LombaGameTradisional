@@ -60,7 +60,7 @@ public class KetapelTimer : MonoBehaviour
             //MAX SECOND GAME LENGTH = 180 S
             gameOver = true;
             cutsceneGood.Play();
-
+            StartCoroutine(QuitGame(14));
         }
 
         randomValueLayer4 = Random.Range(0, 5);
@@ -315,11 +315,17 @@ public class KetapelTimer : MonoBehaviour
                 Debug.Log("Gameover : KETAPEL");
                 debugLogGameOver = true;
                 jumpScare.isDead = debugLogGameOver;
+                StartCoroutine(QuitGame(13));
             }
             
         }
 
     }
 
+    private IEnumerator QuitGame(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Application.Quit();
+    }
 
 }
