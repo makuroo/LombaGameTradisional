@@ -45,6 +45,9 @@ public class QTEButtonBambu : MonoBehaviour
     public Timer timerscript;
 
     public PlayableDirector cutsceneVictory;
+
+    public AudioSource source;
+    public AudioClip[] clip;
     private void Start()
     {
         HideQTE();
@@ -175,11 +178,6 @@ public class QTEButtonBambu : MonoBehaviour
                         ShowQTE();
                     }
                 }
-
-
-
-
-
             }
 
             if (qteActive)
@@ -261,13 +259,16 @@ public class QTEButtonBambu : MonoBehaviour
 
     private void qteSuccess()
     {
-        Debug.Log("QTE Success");
+        source.clip =  clip[0];
+        source.Play();
         HideQTE();
         RandomWaktuMuncul();
     }
 
     private void qteFailed()
     {
+        source.clip = clip[1];
+        source.Play();
         Debug.Log("wrong key pressed BAMBUGILA");
         HideQTE();
         RandomWaktuMuncul();
