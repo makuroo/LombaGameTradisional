@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     private float timer;
     public Text textTimer;
 
-    private int gameFinished;
+    public int gameFinished;
     public PlayableDirector timelineVictory;
     private void Update()
     {

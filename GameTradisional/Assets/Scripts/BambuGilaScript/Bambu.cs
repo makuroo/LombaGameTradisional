@@ -174,7 +174,7 @@ public class Bambu : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         Debug.Log("delayloadscenekerja");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("BambuGila");
         //cutsceneRestart.Play();
     }
 

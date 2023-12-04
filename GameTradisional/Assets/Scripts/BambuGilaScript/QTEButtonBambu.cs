@@ -42,6 +42,7 @@ public class QTEButtonBambu : MonoBehaviour
     //Script
     public Bambu bambuScript;
     public bool buttonMenang;
+    public Timer timerscript;
 
     public PlayableDirector cutsceneVictory;
     private void Start()
@@ -153,7 +154,7 @@ public class QTEButtonBambu : MonoBehaviour
 
             if (bambuPref == 0)
             {
-                if (timerGame >= 31)
+                if (timerGame >= 30)
                 {
                     Debug.Log("a");
                     appearTimer -= Time.deltaTime;
@@ -165,7 +166,7 @@ public class QTEButtonBambu : MonoBehaviour
                 }
             } else if (bambuPref == 1)
             {
-                if (timerGame >= 31)
+                if (timerGame >= 30)
                 {
                     appearTimer -= Time.deltaTime;
 
@@ -213,14 +214,18 @@ public class QTEButtonBambu : MonoBehaviour
 
     public void ShowQTE()
     {
-        randomIndex = Random.Range(0, keyFolder.Length);
-        indexKey = randomIndex;
-        Debug.Log(indexKey);
-        keyQTE.GetComponent<SpriteRenderer>().sprite = keyFolder[indexKey].sprite;
-        keyLight.lightCookieSprite = keyFolder[indexKey].sprite;
+        if (timerscript.gameFinished == 0)
+        {
+            randomIndex = Random.Range(0, keyFolder.Length);
+            indexKey = randomIndex;
+            Debug.Log(indexKey);
+            keyQTE.GetComponent<SpriteRenderer>().sprite = keyFolder[indexKey].sprite;
+            keyLight.lightCookieSprite = keyFolder[indexKey].sprite;
 
-        qteActive = true;
-        qteTimerDurasi = durasiDisplayTime;
+            qteActive = true;
+            qteTimerDurasi = durasiDisplayTime;
+        }
+
     }
 
     public void HideQTE()
