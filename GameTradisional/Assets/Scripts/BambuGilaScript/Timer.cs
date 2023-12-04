@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
         string timerText = Mathf.Floor(timer).ToString();
         textTimer.text = timerText;
 
-        if(timer >= 20)
+        if(timer >= 120)
         {
             Debug.Log("BambuVictory");
             gameFinished = 1;
