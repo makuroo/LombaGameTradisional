@@ -23,13 +23,10 @@ public class EnemyCompass : MonoBehaviour
     public void RotateArrow()
     {
 
-        Vector3 directionToB = (ghost.transform.position - player.transform.position).normalized;
-        Debug.Log(directionToB);
-        // Calculate the rotation angle in radians using Mathf.Atan2
-        float angle = Mathf.Atan2(directionToB.y, directionToB.x) * Mathf.Rad2Deg;
-        if (angle < 0)
-            angle = -angle;
-        // Apply the rotation to the compass arrow image
-        transform.localRotation = Quaternion.Euler(0, 0, angle);
+        dirVector = ghost.transform.position - player.transform.position;
+        float angleRadians = Mathf.Atan2(dirVector.y, dirVector.x);
+
+        Quaternion rotation = Quaternion.Euler(0, 0, angleRadians * Mathf.Rad2Deg);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 2 * Time.deltaTime);
     }
 }
