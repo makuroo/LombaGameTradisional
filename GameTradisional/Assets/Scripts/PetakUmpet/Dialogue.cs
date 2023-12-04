@@ -28,8 +28,7 @@ public class Dialogue : MonoBehaviour
     {
         if (resetPetakUmpetPref)
             PlayerPrefs.SetInt("prefPetakUmpet",0);
-
-
+            
         petakUmpetImage.CrossFadeAlpha(0, 0, true);
         StartCoroutine(WaitForStartCutscene());
     }

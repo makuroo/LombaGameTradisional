@@ -33,6 +33,7 @@ public class EnemyGlow : MonoBehaviour
 
     void Update()
     {
+        compass.RotateArrow();
         if (startCountDown)
         {
             nextGlowTimer += Time.deltaTime;
@@ -97,7 +98,7 @@ public class EnemyGlow : MonoBehaviour
         {
             timer += Time.deltaTime;
             light2D.intensity = Mathf.Lerp(0, 1, timer / lerpDuration);
-            compass.RotateArrow();
+            
         }
         else if(light2D.intensity > 0 && isOff)
         {
