@@ -10,6 +10,13 @@ TagManager:
   - Lemari
   - HideSpace
   - OutGate
+  - ketapelHantu2
+  - ketapelHantu3
+  - ketapelHantu4
+  - ketapelHantu5
+  - ketapelHantu6
+  - ketapelHantu7
+  - ketapelHantu8
   layers:
   - Default
   - TransparentFX

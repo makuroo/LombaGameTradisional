@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class KetapelCursorMovement : MonoBehaviour
 {
-    //UPDATED : 17/09/2023 14:25
-
     public Camera mainCamera;
     public int tembakHitHantu;
 
@@ -67,7 +65,7 @@ public class KetapelCursorMovement : MonoBehaviour
                 if (hit.collider != null)
                 {
                     if (hit.collider.CompareTag("ketapelHantu") || hit.collider.CompareTag("ketapelHantu2") || hit.collider.CompareTag("ketapelHantu3") || hit.collider.CompareTag("ketapelHantu4")
-                        || hit.collider.CompareTag("ketapelHantu5") || hit.collider.CompareTag("ketapelHantu6") || hit.collider.CompareTag("ketapelHantu7"))
+                        || hit.collider.CompareTag("ketapelHantu5") || hit.collider.CompareTag("ketapelHantu6") || hit.collider.CompareTag("ketapelHantu7") || hit.collider.CompareTag("ketapelHantu8"))
                     {
                         Instantiate(batu, position2D, Quaternion.identity);
                         Debug.Log("Hit Hantu");

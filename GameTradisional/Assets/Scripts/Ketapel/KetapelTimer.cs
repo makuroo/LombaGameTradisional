@@ -13,6 +13,9 @@ public class KetapelTimer : MonoBehaviour
     private int gameFinished;
     public KetapelCursorMovement ketapelCursorMovementScript;
 
+
+
+
     [SerializeField]
     private Transform[] positionList;
     [SerializeField]
@@ -32,6 +35,8 @@ public class KetapelTimer : MonoBehaviour
     bool debugLogGameOver = false;
 
     public BoxCollider2D boxCollider2D;
+
+    public PolygonCollider2D[] polygonCollider;
 
     private void Start()
     {
@@ -62,50 +67,157 @@ public class KetapelTimer : MonoBehaviour
 
         if(gameOver == false)
         {
-            if(index == 0)
+
+            switch (index)
             {
-                Debug.Log("ColliderResize1");
-                boxCollider2D.offset = new Vector2(-1.168127f, -0.1968098f);
-                boxCollider2D.size = new Vector2(2.121198f, 9.384619f);
-            }else if(index == 1)
-            {
-                Debug.Log("ColliderResize2");
-                boxCollider2D.offset = new Vector2(-1.5117f, 2.070802f);
-                boxCollider2D.size = new Vector2(1.708909f, 8.422663f);
+                case 0:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if(index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 4:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 5:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 6:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+                case 7:
+                    for (int i = 0; i < polygonCollider.Length; i++)
+                    {
+                        if (index == i)
+                        {
+                            polygonCollider[i].enabled = true;
+                        }
+                        else
+                        {
+                            polygonCollider[i].enabled = false;
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
             }
-            else if (index == 2)
-            {
-                Debug.Log("ColliderResize3");
-                boxCollider2D.offset = new Vector2(-0.6871716f, 2.345661f);
-                boxCollider2D.size = new Vector2(1.708914f, 7.872945f);
-            }
-            else if (index == 3)
-            {
-                Debug.Log("ColliderResize4");
-                boxCollider2D.offset = new Vector2(-0.2061207f, 2.414375f);
-                boxCollider2D.size = new Vector2(3.4955f, 7.735516f);
-            }
-            else if (index == 4)
-            {
-                Debug.Log("ColliderResize5");
-                boxCollider2D.offset = new Vector2(0.481024f, 2.414375f);
-                boxCollider2D.size = new Vector2(2.396066f, 7.735516f);
-            }
-            else if (index == 5)
-            {
-                boxCollider2D.offset = new Vector2(1.030741f, 2.414375f);
-                boxCollider2D.size = new Vector2(1.296632f, 7.735516f);
-            }
-            else if (index == 6)
-            {
-                boxCollider2D.offset = new Vector2(1.030736f, 0.00935936f);
-                boxCollider2D.size = new Vector2(2.396073f, 12.54555f);
-            }
-            else if (index == 7)
-            {
-                boxCollider2D.offset = new Vector2(-0.6871318f, 2.185326f);
-                boxCollider2D.size = new Vector2(1.708926f, 8.193613f);
-            }
+
+            //if(index == 0)
+            //{
+            //    polygonCollider[0].enabled = true;
+                
+            //}else if(index == 1)
+            //{
+            //    polygonCollider[1].enabled = true;
+
+            //}
+            //else if (index == 2)
+            //{
+            //    polygonCollider[2].enabled = true;
+
+            //}
+            //else if (index == 3)
+            //{
+            //    polygonCollider[3].enabled = true;
+
+            //}
+            //else if (index == 4)
+            //{
+            //    polygonCollider[4].enabled = true;
+
+            //}
+            //else if (index == 5)
+            //{
+            //    polygonCollider[5].enabled = true;
+
+            //}
+            //else if (index == 6)
+            //{
+            //    polygonCollider[6].enabled = true;
+
+            //}
+            //else if (index == 7)
+            //{
+            //    polygonCollider[7].enabled = true;
+
+            //}
 
 
 
