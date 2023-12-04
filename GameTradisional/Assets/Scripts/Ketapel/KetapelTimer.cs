@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class KetapelTimer : MonoBehaviour
@@ -13,7 +14,8 @@ public class KetapelTimer : MonoBehaviour
     private int gameFinished;
     public KetapelCursorMovement ketapelCursorMovementScript;
 
-
+    public PlayableDirector cutsceneGood;
+    public PlayableDirector cutsceneBad;
 
 
     [SerializeField]
@@ -53,9 +55,11 @@ public class KetapelTimer : MonoBehaviour
         textTimer.text = timerText;
 
 
-        if (gameFinished == 0)
+        if (gameFinished == 0 && timer >= 10)
         {
             //MAX SECOND GAME LENGTH = 180 S
+            gameOver = true;
+            cutsceneGood.Play();
 
         }
 
@@ -315,7 +319,7 @@ public class KetapelTimer : MonoBehaviour
             
         }
 
-
     }
+
 
 }
