@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BambuGila.unity
     guid: 016ff13d1a6147144a38f35583d98c6e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ketapel.unity
     guid: 87df43e4ba7b8ef4289ecc622232c2c4
   m_configObjects: {}
