@@ -55,7 +55,7 @@ public class KetapelTimer : MonoBehaviour
         textTimer.text = timerText;
 
 
-        if (gameFinished == 0 && timer >= 10)
+        if (gameFinished == 0 && timer >= 60)
         {
             //MAX SECOND GAME LENGTH = 180 S
             gameOver = true;
