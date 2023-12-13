@@ -55,7 +55,7 @@ public class KetapelTimer : MonoBehaviour
         textTimer.text = timerText;
 
 
-        if (gameFinished == 0 && timer >= 10)
+        if (gameFinished == 0 && timer >= 60)
         {
             //MAX SECOND GAME LENGTH = 180 S
             gameOver = true;
@@ -182,48 +182,6 @@ public class KetapelTimer : MonoBehaviour
                 default:
                     break;
             }
-
-            //if(index == 0)
-            //{
-            //    polygonCollider[0].enabled = true;
-                
-            //}else if(index == 1)
-            //{
-            //    polygonCollider[1].enabled = true;
-
-            //}
-            //else if (index == 2)
-            //{
-            //    polygonCollider[2].enabled = true;
-
-            //}
-            //else if (index == 3)
-            //{
-            //    polygonCollider[3].enabled = true;
-
-            //}
-            //else if (index == 4)
-            //{
-            //    polygonCollider[4].enabled = true;
-
-            //}
-            //else if (index == 5)
-            //{
-            //    polygonCollider[5].enabled = true;
-
-            //}
-            //else if (index == 6)
-            //{
-            //    polygonCollider[6].enabled = true;
-
-            //}
-            //else if (index == 7)
-            //{
-            //    polygonCollider[7].enabled = true;
-
-            //}
-
-
 
             if (index == 7)
             {

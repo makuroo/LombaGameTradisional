@@ -51,6 +51,17 @@ public class PlayerStatus : MonoBehaviour
     {
         if (collision.CompareTag("Lemari"))
         {
+            Debug.Log("b");
+            collision.transform.parent.GetChild(1).gameObject.SetActive(true);
+            canUseE = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Lemari"))
+        {
+            collision.transform.parent.GetChild(1).gameObject.SetActive(false);
             canUseE = true;
         }
     }
